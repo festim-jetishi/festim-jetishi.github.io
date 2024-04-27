@@ -65,11 +65,59 @@
             border-bottom: 1px solid #ccc;
             text-align: justify;
         }
+		@media (max-width: 768px) { /* Adjustments for screens smaller than 768px */
+    nav ul {
+        flex-direction: column;
+        width: 100%; /* Full width */
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 40px; /* Positioned right below the nav bar */
+        left: 0;
+        background-color: black; /* Ensures text is readable */
+    }
+    nav ul li a {
+        display: block;
+        text-align: center;
+    }
+    .menu-btn {
+        display: block;
+        background-color: black;
+        color: white;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    .show { /* Class to toggle display */
+        display: flex;
+    }
+}
+
+/* Style adjustments to prevent cutting off */
+nav {
+    padding: 0; /* Reduce or remove padding */
+}
+nav ul li a {
+    padding: 8px 5px; /* Smaller padding */
+    margin: 0 5px; /* Smaller margins */
+}
     </style>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll("nav ul li a");
+	
+	const menuBtn = document.createElement('button');
+    menuBtn.innerHTML = '☰'; // Hamburger icon
+    menuBtn.className = 'menu-btn';
+    document.querySelector('nav').prepend(menuBtn);
 
+    menuBtn.addEventListener('click', function() {
+        const navUl = document.querySelector('nav ul');
+        navUl.classList.toggle('show');
+    });
+	
     function activateLink() {
         const scrollPosition = window.scrollY + window.innerHeight / 2;
         let currentSection = null;

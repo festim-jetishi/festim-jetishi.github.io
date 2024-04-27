@@ -4,96 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <title>Ameris Insurance</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Ameris-Treuhand</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-        header {
-            background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center / cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        header h1 {
-            color: white;
-            font-size: 48px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-        }
-        nav {
-            background-color: black; /* Solid black background */
-            padding: 10px 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            position: fixed; /* Fixed to stay on top */
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-        }
+    body, html {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        background: #0A0A0A; /* Dunkler Hintergrund */
+        color: #CCCCCC; /* Helles Grau für Text */
+        font-family: Arial, sans-serif;
+    }
+    header {
+        background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center / cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    header h1 {
+        color: white;
+        font-size: 48px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    nav {
+        background-color: black;
+        padding: 10px 0;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+    }
+	
+	a.active {
+		color: white;
+	}
+	
+    nav ul {
+        display: flex;
+    }
+    nav ul li a {
+        color: #aaa;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 15px;
+        padding: 10px;
+        position: relative;
+    }
+    nav ul li a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: turquoise;
+        transition: width 0.3s;
+    }
+    nav ul li a:hover::after, nav ul li a.active::after {
+        width: 100%;
+    }
+	
+	.menu-icon {
+		display: none;
+	}
+		
+    .fa-ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .fa-ul li {
+        margin-bottom: 10px;
+    }
+    .fa-ul li i {
+        width: 2em;
+    }
+    footer {
+        text-align: center;
+        padding: 20px 0;
+    }
+    #services {
+        text-align: center;
+        margin: 20px;
+    }
+    .service-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    .service-card {
+        background: #1A1A2E; /* Sehr dunkles Blau */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        width: 30%;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+    }
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    }
+    .service-icon {
+        font-size: 24px;
+        color: #40E0D0; /* Türkis */
+        margin-right: 10px;
+    }
+    .section {
+        padding: 150px 20px;
+        border-bottom: 1px solid #ccc;
+        text-align: justify;
+    }
+    @media (max-width: 768px) {
         .menu-icon {
-            display: none; /* Hide by default, will be displayed on small screens */
-            cursor: pointer;
-            padding: 10px;
+            display: block;
         }
         nav ul {
-            display: flex;
-        }
-        nav ul li a {
-            color: #aaa; /* Greyed out color */
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-            padding: 10px;
-            position: relative;
-        }
-        nav ul li a::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: turquoise;
-            transition: width 0.3s;
-        }
-        nav ul li a:hover::after, nav ul li a.active::after {
+            flex-direction: column;
             width: 100%;
+            display: none;
         }
-        nav ul li a.active {
-            color: white;
+        nav ul.active {
+            display: flex;
+            position: fixed;
+            background-color: black;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 1001;
+            padding-top: 50px;
         }
-        .section {
-            padding: 150px 20px; /* Increased padding for better testing */
-            border-bottom: 1px solid #ccc;
-            text-align: justify;
+        nav ul li {
+            text-align: center;
         }
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block; /* Show the menu icon on small screens */
-            }
-            nav ul {
-                flex-direction: column;
-                width: 100%; /* Full width */
-                display: none; /* Hidden by default */
-            }
-            nav ul.active {
-                display: flex; /* Display the menu when active */
-                position: fixed; /* Fixed position */
-                background-color: black; /* Background color */
-                height: 100vh; /* Full screen height */
-                top: 0;
-                left: 0;
-                z-index: 1001; /* High z-index */
-                padding-top: 50px; /* Space for the icon */
-            }
-            nav ul li {
-                text-align: center; /* Center the links */
-            }
+    }
+	
+	@media (max-width: 1000px) {
+		.service-container {
+            flex-direction: column; /* Stack cards vertically */
         }
-    </style>
+        .service-card {
+            width: 90%; /* Make cards wider on small screens */
+            margin: 10px auto; /* Center cards horizontally */
+        }
+    }
+</style>
 </head>
 <body>
     <nav>
@@ -106,48 +163,57 @@
         </div>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">Über Ameris</a></li>
+            <li><a href="#services">Dienstleistungen</a></li>
+            <li><a href="#contact">Kontakt</a></li>
         </ul>
     </nav>
     <header id="home">
-        <h1>Ameris</h1>
+        <h1>Ameris-Treuhand</h1>
     </header>
 	
     <main class="container">
         <section id="about" class="section">
-            <h2>About Us</h2>
-            <h3>Who we are and what we do</h3>
-            <p>We are a leading insurance provider in Switzerland, offering comprehensive insurance solutions across a variety of sectors. Trust, reliability, and customer satisfaction are our core values. We pride ourselves on our commitment to providing exceptional service and support to all our clients. Our team is made up of industry experts who are passionate about making insurance simpler and more accessible for everyone.</p>
-            <p>Our mission is to empower our customers by providing them with the tools and information they need to make informed insurance decisions. We believe in building strong, lasting relationships with our clients, and we strive to exceed their expectations at every turn.</p>
+            <h2>Über Ameris</h2>
+            <p>Als Gründer von Ameris stehe ich, Liridon Ameti, für maßgeschneiderte Finanzlösungen und professionelle Beratung rund um Vorsorge und Steuern. Vertrauen, Zuverlässigkeit und Kundenzufriedenheit stehen dabei für mich an erster Stelle.</p>
         </section>
         <section id="services" class="section">
-            <h2>Our Services</h2>
-            <h3>Explore our wide range of insurance products</h3>
-            <p>From health and life insurance to automotive and property insurance, Ameris provides you with the protection you need to live your life with peace of mind. Our comprehensive portfolio of products includes:</p>
-            <ul>
-                <li>Health Insurance</li>
-                <li>Life Insurance</li>
-                <li>Auto Insurance</li>
-                <li>Property Insurance</li>
-                <li>Business Insurance</li>
-            </ul>
-            <p>We tailor our services to meet the unique needs of each client, ensuring they receive the best possible coverage at the most competitive prices.</p>
-        </section>
+    <h2>Dienstleistungen</h2>
+    <div class="service-container">
+        <div class="service-card">
+            <i class="fa-solid fa-user-tie service-icon"></i>
+            <div>
+                <h3>Vorsorgeberatung</h3>
+                <p>Private und betriebliche Altersvorsorge, Vorsorge für Selbstständige</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-chart-line service-icon"></i>
+            <div>
+                <h3>Finanzberatung</h3>
+                <p>Finanzplanung, Anlageberatung, Vermögensverwaltung</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-house-chimney service-icon"></i>
+            <div>
+                <h3>Steuerberatung</h3>
+                <p>Steuererklärung, Steueroptimierung, internationales Steuerrecht</p>
+            </div>
+        </div>
+    </div>
+</section>
         <section id="contact" class="section">
-            <h2>Contact Us</h2>
-            <h3>Get in touch with our team</h3>
-            <p>Whether you have questions about our services or need assistance with an existing policy, our dedicated team is here to help you. You can reach us through the following methods:</p>
-            <ul>
-                <li>Phone: 123-456-7890</li>
-                <li>Email: support@amerisinsurance.com</li>
-                <li>Visit our office: 123 Main St, Zurich, Switzerland</li>
+            <h2>Kontakt</h2>
+            <ul class="fa-ul">
+                <li><i class="fa-solid fa-phone"></i>Telefon: 123-456-7890</li>
+                <li><i class="fa-solid fa-envelope"></i>E-Mail: <a href="mailto:liridon.ameti@ameris-treuhand.ch">liridon.ameti@ameris-treuhand.ch</a></li>
+                <li><i class="fa-solid fa-location-dot"></i>Büro: Tälligstrasse 9, 8570 Weinfelden, Schweiz</li>
             </ul>
         </section>
     </main>
-    <footer class="container">
-        <small>Footer content here.</small>
+    <footer>
+        <small>© 2024 Ameris-Treuhand. Alle Rechte vorbehalten.</small>
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

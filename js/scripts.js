@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    AOS.init();
+
     const menuIcon = document.querySelector(".menu-icon");
     const navLinks = document.querySelector("nav ul");
     const sections = document.querySelectorAll("section");

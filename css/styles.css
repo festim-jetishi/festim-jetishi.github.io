@@ -13,7 +13,48 @@ html {
 }
 
 #home, #about, #services, #contact {
-    scroll-margin-top: 50px;
+    scroll-margin-top: 100px;
+    padding: 140px 20px;
+}
+
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 20px; /* Adjust based on your layout */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px; /* Size of the arrow */
+    color: white; /* Ensuring arrow is white */
+    z-index: 10; /* Higher z-index to make it appear above the shadow */
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+.scroll-down-arrow i {
+    color: white; /* Dark grey color for visibility */
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 1); /* Soft shadow for better visibility */
+}
+
+
+.header-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 480px; /* Adjust the height to control the transition area */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #0a0a0a);
 }
 
 header {
@@ -173,7 +214,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 20px;
     color: white; /* Helle Schrift für gute Lesbarkeit */
 }
 
@@ -321,6 +361,10 @@ footer {
 }
 
 @media (max-width: 768px) {
+
+    .service-container {
+        margin-bottom: 0;
+    }
 
     .main-title {
         font-size: 42px;

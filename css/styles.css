@@ -167,6 +167,7 @@ footer {
     margin-top: 20px;
     margin-bottom: 100px;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .service-card {
@@ -379,6 +380,49 @@ footer {
     .service-card {
         width: 100%; /* Make cards wider on small screens */
         margin: 10px auto; /* Center cards horizontally */
+    }
+
+    nav {
+        padding: 8px 20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header h1 {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    nav ul.active {
+        display: flex;
+        position: fixed;
+        background-color: rgba(0,0,0,0.95);
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+        padding-top: 50px;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+    .brand {
+        position: relative;
+        margin-bottom: 0;
+        top: 0;
+        left: 0;
+        font-size: 20px;
+    }
+
+    .menu-icon {
+        display: block;
     }
 }
 

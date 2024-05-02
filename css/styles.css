@@ -183,11 +183,6 @@ footer {
 .service-card p {
     color: white !important;
 }
-
-.contact-card p {
-    color: white !important;
-}
-
 .service-card h3 {
     color: white !important;
 }
@@ -297,6 +292,7 @@ footer {
 
 .contact-card p {
     margin: 10px 0;
+    color: white !important;
 }
 
 .contact-card p a {

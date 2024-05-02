@@ -180,6 +180,14 @@ footer {
     transition: transform 0.3s ease-in-out;
 }
 
+.service-card p {
+    color: white !important;
+}
+
+.service-card h3 {
+    color: white !important;
+}
+
 .service-card::before {
     content: ""; /* Create a pseudo-element */
     position: absolute; /* Position the pseudo-element */

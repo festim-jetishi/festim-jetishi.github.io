@@ -272,17 +272,17 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
       style={style}
       className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-4 md:p-8"
     >
-      <div className="relative w-full max-w-5xl h-[80vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+      <div className="relative w-full max-w-5xl min-h-[85vh] md:h-[80vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
         
         {/* Image Section */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden group">
-          <motion.div 
+        <div className="w-full md:w-1/2 h-48 sm:h-56 md:h-full relative overflow-hidden group flex-shrink-0">
+          <motion.div
             style={{ scale: imageScale, y: imageY }}
             className="w-full h-full"
           >
-            <img 
-              src={feature.image} 
-              alt={feature.title} 
+            <img
+              src={feature.image}
+              alt={feature.title}
               className="w-full h-full object-cover transition-transform duration-700"
             />
           </motion.div>
@@ -290,18 +290,18 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
         </div>
 
         {/* Text Section */}
-        <div className="w-full md:w-1/2 h-1/2 md:h-full p-8 md:p-12 flex flex-col justify-center bg-white relative">
+        <div className="w-full md:w-1/2 flex-1 md:h-full p-6 sm:p-8 md:p-12 flex flex-col justify-center bg-white relative">
           {/* Decorative background element */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-stone-50 rounded-bl-full -z-0" />
           
           <motion.div style={{ y: textY, opacity: textOpacity }} className="relative z-10">
-            <span className="text-secondary/60 text-sm tracking-widest uppercase mb-4 font-sans block">
+            <span className="text-secondary/60 text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-sans block">
               0{index + 1} — Philosophie
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif text-primary mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-primary mb-4 sm:mb-6 leading-tight">
               {feature.title}
             </h2>
-            <p className="text-lg text-secondary leading-relaxed font-sans mb-8">
+            <p className="text-base sm:text-lg text-secondary leading-relaxed font-sans mb-6 sm:mb-8">
               {feature.description}
             </p>
             

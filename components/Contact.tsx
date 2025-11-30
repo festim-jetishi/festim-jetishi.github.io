@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="bg-card py-32 rounded-t-[60px] md:rounded-t-[100px] mt-[-60px]">
+    <section id="contact" className="bg-card bg-dots-dark py-32 rounded-t-[60px] md:rounded-t-[100px] mt-[-60px]">
       <div className="container mx-auto px-6 md:px-12">
         <div className="max-w-3xl mx-auto text-center mb-20">
           <h2 className="font-serif text-5xl md:text-7xl text-primary mb-8">Starten wir ein Projekt.</h2>

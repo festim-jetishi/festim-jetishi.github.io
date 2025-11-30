@@ -66,7 +66,7 @@ export const Services: React.FC = () => {
   const [activeService, setActiveService] = useState<number>(1);
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-stone-100 relative">
+    <section id="services" className="py-24 md:py-32 bg-stone-100 bg-dots-dark relative">
       <div className="container mx-auto px-4 md:px-8">
         
         {/* Section Header */}

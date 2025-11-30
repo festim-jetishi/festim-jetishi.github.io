@@ -39,7 +39,7 @@ const founders = [
 
 const TeamSection: React.FC = () => {
   return (
-    <section id="about" className="py-32 bg-stone-900 relative overflow-hidden">
+    <section id="about" className="py-32 bg-stone-900 bg-dots-light relative overflow-hidden">
       {/* Abstract Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-green/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-white/5 blur-[100px] rounded-full pointer-events-none" />
@@ -168,7 +168,7 @@ export const About: React.FC = () => {
     <>
     <TeamSection />
     {/* Height is 300vh to allow for enough scroll distance (1 screen per card) */}
-    <section ref={containerRef} className="relative h-[300vh] bg-stone-100">
+    <section ref={containerRef} className="relative h-[300vh] bg-stone-100 bg-dots-dark">
       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
         <div className="relative w-full h-full max-w-7xl mx-auto px-4 md:px-8 py-12 flex items-center justify-center">
           

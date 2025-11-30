@@ -38,14 +38,14 @@ export const Portfolio: React.FC = () => {
   const activeProject = projects.find(p => p.id === activeId) || projects[0];
 
   return (
-    <section id="portfolio" className="bg-page relative">
+    <section id="portfolio" className="bg-page bg-dots-dark relative">
       
       {/* Unified Layout */}
       <div className="flex flex-col md:flex-row w-full relative">
         
         {/* Left/Top: Sticky Content */}
         {/* On mobile: sticky below nav, bg-page to cover scrolling images */}
-        <div className="w-full md:w-1/2 sticky top-[70px] md:top-0 z-20 bg-page/95 backdrop-blur-sm md:bg-page md:h-screen flex flex-col px-6 md:px-24 border-b md:border-b-0 border-stone-100/50">
+        <div className="w-full md:w-1/2 sticky top-[70px] md:top-0 z-20 bg-page/95 bg-dots-dark backdrop-blur-sm md:bg-page md:h-screen flex flex-col px-6 md:px-24 border-b md:border-b-0 border-stone-100/50">
             
             {/* Section Title */}
             <div className="mt-4 md:mt-32 mb-6 md:mb-32 flex justify-between items-end md:block">

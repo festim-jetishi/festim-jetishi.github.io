@@ -13,7 +13,7 @@ const TESTIMONIALS = [
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="bg-page py-32 border-t border-stone-100 overflow-hidden relative">
+    <section className="bg-page bg-dots-dark py-32 border-t border-stone-100 overflow-hidden relative">
       <div className="container mx-auto px-6 md:px-12 text-center mb-16">
         <span className="font-sans text-sm tracking-widest uppercase text-secondary block">Referenzen</span>
         <h2 className="font-serif text-3xl md:text-4xl text-primary mt-4">Was unsere Kunden sagen</h2>

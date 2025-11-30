@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Röllinger GmbH | Für alles, was Ihr Zuhause braucht.</title>
+    <meta name="description" content="Röllinger GmbH - Wir packen einfach an. Für alles, was Ihr Zuhause braucht. Ihr junges Macher-Team für Hauswartung, Garten und Bau in der Zentralschweiz." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://festim-jetishi.github.io/" />
+    <meta property="og:title" content="Röllinger GmbH | Für alles, was Ihr Zuhause braucht." />
+    <meta property="og:description" content="Röllinger GmbH - Wir packen einfach an. Für alles, was Ihr Zuhause braucht. Ihr junges Macher-Team für Hauswartung, Garten und Bau in der Zentralschweiz." />
+    <meta property="og:image" content="https://festim-jetishi.github.io/logo.jpeg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://festim-jetishi.github.io/" />
+    <meta property="twitter:title" content="Röllinger GmbH | Für alles, was Ihr Zuhause braucht." />
+    <meta property="twitter:description" content="Röllinger GmbH - Wir packen einfach an. Für alles, was Ihr Zuhause braucht. Ihr junges Macher-Team für Hauswartung, Garten und Bau in der Zentralschweiz." />
+    <meta property="twitter:image" content="https://festim-jetishi.github.io/logo.jpeg" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['DM Sans', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              page: '#FDFCF8', // Warm Bone
+              primary: '#1C1917', // Warm Charcoal
+              secondary: '#57534E', // Stone Grey
+              tertiary: '#A8A29E', // Lighter Stone
+              card: '#F5F5F4', // Light Stone
+              brand: {
+                green: '#8FDA77',
+                dark: '#1C1917', 
+              },
+            },
+            borderRadius: {
+              'soft': '32px',
+              'super': '40px',
+            },
+            transitionDuration: {
+              'slow': '500ms',
+            },
+            transitionTimingFunction: {
+              'organic': 'cubic-bezier(0.25, 0.8, 0.25, 1)',
+            },
+            backgroundImage: {
+              'hero-gradient': 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%)',
+            },
+            animation: {
+              'infinite-scroll': 'infinite-scroll 40s linear infinite',
+            },
+            keyframes: {
+              'infinite-scroll': {
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(-50%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #FDFCF8;
+        color: #1C1917;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      ::selection {
+        background-color: #8FDA77;
+        color: #1C1917;
+      }
+
+      /* Hide Native Scrollbar (replaced by custom one) */
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+      
+      html {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      /* Hide Scrollbar for Carousel */
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Cursor Styles */
+      .cursor-drag {
+        cursor: grab;
+      }
+      .cursor-drag:active {
+        cursor: grabbing;
+      }
+
+      /* Dot Grid Patterns */
+      .bg-dots-dark {
+        background-image: radial-gradient(circle, rgba(28, 25, 23, 0.15) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+      
+      .bg-dots-light {
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+    </style>
+
+  <script type="importmap">
+{
+  "imports": {
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-Dc-SUGC1.js"></script>
+</head>
+  <body class="overflow-x-hidden">
+    <div id="root"></div>
+</body>
+</html>

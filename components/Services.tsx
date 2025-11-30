@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Home, Leaf, Hammer, Trash2, Building2, Shovel, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 interface Service {
   id: number;
@@ -146,8 +147,25 @@ interface ServiceItemProps {
 }
 
 const ServiceItem: React.FC<ServiceItemProps> = ({ service, isActive, onActivate }) => {
+  const itemRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+
+  // Scroll the item into view when it becomes active on mobile
+  useEffect(() => {
+    if (isActive && isMobile && itemRef.current) {
+      // Small delay to let the expand animation start
+      setTimeout(() => {
+        itemRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    }
+  }, [isActive, isMobile]);
+
   return (
-    <div 
+    <div
+      ref={itemRef}
       onClick={onActivate}
       onMouseEnter={onActivate}
       className={`group relative p-6 md:p-8 rounded-xl transition-all duration-500 cursor-pointer overflow-hidden border border-transparent ${isActive ? 'bg-white shadow-xl border-stone-100' : 'hover:bg-white hover:shadow-lg'}`}

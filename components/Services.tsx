@@ -153,13 +153,23 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ service, isActive, onActivate
   // Scroll the item into view when it becomes active on mobile
   useEffect(() => {
     if (isActive && isMobile && itemRef.current) {
-      // Small delay to let the expand animation start
+      // Wait for the expand animation to complete (300ms) + buffer
       setTimeout(() => {
-        itemRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
+        if (!itemRef.current) return;
+        
+        const navbarHeight = 80; // Fixed navbar offset
+        const elementRect = itemRef.current.getBoundingClientRect();
+        const elementTop = elementRect.top + window.scrollY;
+        const targetScrollPosition = elementTop - navbarHeight;
+        
+        // Only scroll if the element's top is above the visible area (accounting for navbar)
+        if (elementRect.top < navbarHeight) {
+          window.scrollTo({
+            top: targetScrollPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 350);
     }
   }, [isActive, isMobile]);
 

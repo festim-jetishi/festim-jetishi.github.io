@@ -6,9 +6,10 @@ interface TextRevealProps {
   className?: string;
   delay?: number;
   type?: 'word' | 'char';
+  animateOnMount?: boolean;
 }
 
-export const TextReveal: React.FC<TextRevealProps> = ({ children, className = "", delay = 0, type = 'word' }) => {
+export const TextReveal: React.FC<TextRevealProps> = ({ children, className = "", delay = 0, type = 'word', animateOnMount = false }) => {
   const items = type === 'word' ? children.split(" ") : children.split("");
 
   const container = {
@@ -40,13 +41,16 @@ export const TextReveal: React.FC<TextRevealProps> = ({ children, className = ""
     },
   };
 
+  const animationProps = animateOnMount
+    ? { animate: "visible" }
+    : { whileInView: "visible", viewport: { once: true } };
+
   return (
     <motion.div
       style={{ overflow: "hidden", display: "flex", flexWrap: "wrap" }}
       variants={container}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      {...animationProps}
       className={className}
     >
       {items.map((item, index) => (

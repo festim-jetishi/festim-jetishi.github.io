@@ -38,9 +38,9 @@ export const Hero: React.FC = () => {
             Baar, Zug &mdash; Zentralschweiz
           </span>
           <div className="font-serif text-6xl md:text-8xl text-white leading-[1.05] mb-8 tracking-tight">
-            <TextReveal delay={0.2}>Wir packen</TextReveal>
+            <TextReveal delay={0.2} animateOnMount>Wir packen</TextReveal>
             <span className="italic font-light opacity-90 block mt-2">
-                 <TextReveal delay={0.5}>einfach an.</TextReveal>
+                 <TextReveal delay={0.5} animateOnMount>einfach an.</TextReveal>
             </span>
           </div>
 

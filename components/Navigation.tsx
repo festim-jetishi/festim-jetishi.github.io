@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../logo_short.jpeg';
+import logoImage from '../logo_short.jpeg';
 import { Magnetic } from './ui/Magnetic';
+import { navigation } from '../WEBSITE_CONTENT';
+
+// 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
 export const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,14 +31,6 @@ export const Navigation: React.FC = () => {
       setIsScrolled(true);
     }
   }, [isHomePage]);
-
-  const navLinks = [
-    { name: 'Start', href: 'home' },
-    { name: 'Über Uns', href: 'about' },
-    { name: 'Services', href: 'services' },
-    { name: 'Portfolio', href: 'portfolio' },
-    { name: 'Kontakt', href: 'contact' },
-  ];
 
   // Helper function to scroll to a section by id
   const scrollToSection = (sectionId: string) => {
@@ -83,17 +78,17 @@ export const Navigation: React.FC = () => {
           
           {/* Logo (Left) */}
           <Link to="/" className="flex items-center gap-2 z-50 relative group">
-            <img src={logo} alt="Röllinger" className="h-10 w-auto object-contain" />
-            <span 
+            <img src={logoImage} alt={navigation.logoAltText} className="h-10 w-auto object-contain" />
+            <span
               className={`font-serif text-xl tracking-tight font-medium transition-colors duration-300 ${isScrolled || mobileMenuOpen || !isHomePage ? 'text-primary' : 'text-white'}`}
             >
-              Röllinger GmbH
+              {navigation.companyName}
             </span>
           </Link>
 
           {/* Links (Center) - Absolute Positioned to ensure perfect centering */}
           <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
-            {navLinks.map((link) => (
+            {navigation.links.map((link) => (
               <Magnetic key={link.name}>
                 <a
                   href={`#${link.href}`}
@@ -116,7 +111,7 @@ export const Navigation: React.FC = () => {
                 onClick={(e) => handleNavClick(e, 'contact')}
                 className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border transition-all duration-300 inline-block ${buttonClasses}`}
               >
-                Anfrage
+                {navigation.ctaButtonText}
               </motion.a>
             </Magnetic>
           </div>
@@ -142,7 +137,7 @@ export const Navigation: React.FC = () => {
             className="fixed inset-0 z-40 bg-[#FDFCF8] flex flex-col items-center justify-center"
           >
             <div className="flex flex-col items-center gap-8">
-              {navLinks.map((link, i) => (
+              {navigation.links.map((link, i) => (
                 <motion.a
                   key={link.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -164,7 +159,7 @@ export const Navigation: React.FC = () => {
                 className="mt-8 px-10 py-4 bg-primary text-white rounded-full text-sm uppercase tracking-widest"
                 onClick={(e) => handleNavClick(e, 'contact')}
               >
-                Anfrage starten
+                {navigation.mobileCtaButtonText}
               </motion.a>
             </div>
           </motion.div>

@@ -1,22 +1,16 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { testimonials } from '../WEBSITE_CONTENT';
 
-const TESTIMONIALS = [
-  { quote: "Eine unglaubliche Transformation unseres Gartens. Das Team war professionell und pünktlich.", author: "Familie Müller" },
-  { quote: "Die Renovation wurde genau nach unseren Vorstellungen umgesetzt. Sehr empfehlenswert.", author: "Thomas Huber" },
-  { quote: "Zuverlässiges Facility Management. Wir müssen uns um nichts mehr kümmern.", author: "Liegenschaften AG" },
-  { quote: "Die Zusammenarbeit war hervorragend. Sehr professionell und effizient.", author: "Sarah Weber" },
-  { quote: "Endlich ein Partner, auf den man sich verlassen kann. Top Service!", author: "Michael Schmid" },
-  { quote: "Wir arbeiten seit Jahren mit der Röllinger GmbH zusammen und sind sehr zufrieden.", author: "Immobilien Zürich" },
-];
+// 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
 export const Testimonials: React.FC = () => {
   return (
     <section className="bg-page bg-dots-dark py-32 border-t border-stone-100 overflow-hidden relative">
       <div className="container mx-auto px-6 md:px-12 text-center mb-16">
-        <span className="font-sans text-sm tracking-widest uppercase text-secondary block">Referenzen</span>
-        <h2 className="font-serif text-3xl md:text-4xl text-primary mt-4">Was unsere Kunden sagen</h2>
+        <span className="font-sans text-sm tracking-widest uppercase text-secondary block">{testimonials.sectionLabel}</span>
+        <h2 className="font-serif text-3xl md:text-4xl text-primary mt-4">{testimonials.sectionTitle}</h2>
       </div>
 
       <div className="relative w-full">
@@ -28,7 +22,7 @@ export const Testimonials: React.FC = () => {
         {/* animate-infinite-scroll moves the track. hover:[animation-play-state:paused] stops it on hover. */}
         <div className="flex w-max animate-infinite-scroll hover:[animation-play-state:paused] py-4">
           {/* Double the list for seamless loop */}
-          {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+          {[...testimonials.items, ...testimonials.items].map((t, i) => (
             <motion.div
               key={i}
               className="w-[300px] md:w-[450px] mx-4 md:mx-6 bg-white rounded-soft p-8 md:p-10 shadow-sm border border-stone-100 flex flex-col justify-between cursor-default"

@@ -2,16 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { portfolio } from '../WEBSITE_CONTENT';
 
-const projects = [
-  { id: 1, title: 'Villa am See', category: 'Renovation', location: 'Zug', description: 'Komplettsanierung einer historischen Villa mit modernem Anbau.', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000' },
-  { id: 2, title: 'Stadtgarten Zug', category: 'Gartenbau', location: 'Zug', description: 'Neugestaltung einer urbanen Oase mitheimischen Pflanzen.', image: 'https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1000' },
-  { id: 3, title: 'Geschäftshaus Baar', category: 'Facility', location: 'Baar', description: 'Ganzheitliches Facility Management für einen Bürokomplex.', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000' },
-  { id: 4, title: 'Attikawohnung', category: 'Innenausbau', location: 'Cham', description: 'Exklusiver Innenausbau mit hochwertigen Materialien.', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000' },
-  { id: 5, title: 'Residenz Park', category: 'Umgebung', location: 'Steinhausen', description: 'Parkähnliche Umgebungsgestaltung für eine Wohnüberbauung.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000' },
-];
+// 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
-const ProjectImage = ({ project, setInView }: { project: typeof projects[0], setInView: (id: number) => void }) => {
+const ProjectImage = ({ project, setInView }: { project: typeof portfolio.projects[0], setInView: (id: number) => void }) => {
   const ref = useRef<HTMLDivElement>(null);
   // Trigger when crossing center line
   const isInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
@@ -34,8 +29,8 @@ const ProjectImage = ({ project, setInView }: { project: typeof projects[0], set
 };
 
 export const Portfolio: React.FC = () => {
-  const [activeId, setActiveId] = useState(projects[0].id);
-  const activeProject = projects.find(p => p.id === activeId) || projects[0];
+  const [activeId, setActiveId] = useState(portfolio.projects[0].id);
+  const activeProject = portfolio.projects.find(p => p.id === activeId) || portfolio.projects[0];
 
   return (
     <section id="portfolio" className="bg-page bg-dots-dark relative">
@@ -50,12 +45,15 @@ export const Portfolio: React.FC = () => {
             {/* Section Title */}
             <div className="mt-4 md:mt-32 mb-6 md:mb-32 flex justify-between items-end md:block">
                 <div>
-                    <span className="font-sans text-xs md:text-sm tracking-widest uppercase text-brand-green mb-2 md:mb-4 block">Portfolio</span>
-                    <h2 className="font-serif text-4xl md:text-6xl text-primary leading-tight">Ausgewählte <br className="hidden md:block"/>Arbeiten.</h2>
+                    <span className="font-sans text-xs md:text-sm tracking-widest uppercase text-brand-green mb-2 md:mb-4 block">{portfolio.sectionLabel}</span>
+                    <h2 className="font-serif text-4xl md:text-6xl text-primary leading-tight">
+                      {portfolio.sectionTitle.split(' ').slice(0, 1).join(' ')} <br className="hidden md:block"/>
+                      {portfolio.sectionTitle.split(' ').slice(1).join(' ')}
+                    </h2>
                 </div>
                 {/* Mobile Counter */}
                 <span className="md:hidden font-mono text-xs text-stone-400">
-                    0{activeProject.id} / 0{projects.length}
+                    0{activeProject.id} / 0{portfolio.projects.length}
                 </span>
             </div>
             
@@ -82,7 +80,7 @@ export const Portfolio: React.FC = () => {
                         {activeProject.description}
                     </p>
                     <button className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-brand-green transition-colors pb-4 md:pb-0">
-                        Case Study ansehen <ArrowUpRight className="w-4 h-4" />
+                        {portfolio.caseStudyButtonText} <ArrowUpRight className="w-4 h-4" />
                     </button>
                 </motion.div>
             </div>
@@ -91,9 +89,9 @@ export const Portfolio: React.FC = () => {
         {/* Right/Bottom: Scrollable Images */}
         <div className="w-full md:w-1/2">
              {/* Spacer */}
-            <div className="h-[10vh] md:h-[20vh]" /> 
+            <div className="h-[10vh] md:h-[20vh]" />
             
-            {projects.map(project => (
+            {portfolio.projects.map(project => (
                 <ProjectImage key={project.id} project={project} setInView={setActiveId} />
             ))}
             

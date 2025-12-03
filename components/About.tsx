@@ -1,41 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
+import { about } from '../WEBSITE_CONTENT';
 
-const features = [
-  {
-    id: 1,
-    title: "Handwerk & Präzision",
-    description: "Unsere Wurzeln liegen im soliden Schweizer Handwerk. Bei Renovationen und Umbauten setzen wir auf langlebige Materialien und Detailgenauigkeit, die man spüren kann.",
-    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
-  },
-  {
-    id: 2,
-    title: "Natur & Umgebung",
-    description: "Ein Garten ist mehr als Grünfläche. Er ist Rückzugsort. Wir pflegen und gestalten Aussenbereiche so, dass sie sich harmonisch in die Umgebung einfügen.",
-    image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=2032&auto=format&fit=crop"
-  },
-  {
-    id: 3,
-    title: "Service & Vertrauen",
-    description: "Als Familienunternehmen stehen wir für direkte Kommunikation. Facility Management bedeutet für uns: Wir kümmern uns, als wäre es unser eigenes Zuhause.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2032&auto=format&fit=crop"
-  }
-];
-
-const founders = [
-  {
-    name: "Besim Mani",
-    role: "Geschäftsleitung",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2574&auto=format&fit=crop", // Professional business portrait
-    description: "Der Stratege mit dem Blick für das grosse Ganze."
-  },
-  {
-    name: "Altin Mani",
-    role: "Geschäftsleitung",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2574&auto=format&fit=crop", // Professional business portrait
-    description: "Der Macher mit Fokus auf Perfektion und Details."
-  }
-];
+// 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
 const TeamSection: React.FC = () => {
   return (
@@ -48,7 +15,7 @@ const TeamSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left Column: Headline & Impact */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -56,33 +23,30 @@ const TeamSection: React.FC = () => {
           >
             <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-xs mb-6 block flex items-center gap-2">
               <span className="w-8 h-[1px] bg-brand-green"></span>
-              Über Uns
+              {about.sectionLabel}
             </span>
             <h2 className="font-serif text-5xl md:text-7xl text-white mb-8 leading-[1.1]">
-              Nicht nur verwalten. <br/>
+              {about.mainHeadingLine1} <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-200">
-                Gestalten.
+                {about.mainHeadingLine2}
               </span>
             </h2>
             <p className="text-white/60 text-lg font-light max-w-md leading-relaxed">
-              Wir sind die neue Generation von Facility Services. 
-              Schneller, direkter und mit dem Blick für das Wesentliche.
+              {about.mainDescription}
             </p>
 
             <div className="mt-12 grid grid-cols-2 gap-8 border-t border-white/10 pt-8">
-              <div>
-                <span className="block text-3xl font-serif text-white mb-1">20+</span>
-                <span className="text-xs uppercase tracking-widest text-white/40">Jahre Erfahrung</span>
-              </div>
-              <div>
-                <span className="block text-3xl font-serif text-white mb-1">100%</span>
-                <span className="text-xs uppercase tracking-widest text-white/40">Inhabergeführt</span>
-              </div>
+              {about.statistics.map((stat, index) => (
+                <div key={index}>
+                  <span className="block text-3xl font-serif text-white mb-1">{stat.value}</span>
+                  <span className="text-xs uppercase tracking-widest text-white/40">{stat.label}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
 
           {/* Right Column: Founders */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -95,25 +59,24 @@ const TeamSection: React.FC = () => {
               {/* Header Text */}
               <div className="mb-10">
                 <h3 className="text-2xl font-serif text-white mb-4">
-                  Die Köpfe dahinter
+                  {about.teamCardTitle}
                 </h3>
                 <p className="text-white/70 leading-relaxed font-light">
-                  Wir sind keine klassische Verwaltung, die vom Schreibtisch aus delegiert. Wir sind Macher. 
-                  Wir glauben an direkte Kommunikation, Handschlagqualität und daran, dass man Qualität sehen muss.
+                  {about.teamCardDescription}
                 </p>
               </div>
 
               {/* Founder Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {founders.map((founder, index) => (
+                {about.founders.map((founder, index) => (
                   <div
                     key={index}
                     className="group relative h-[320px] rounded-xl overflow-hidden cursor-pointer"
                   >
                     {/* Image Background */}
                     <div className="absolute inset-0">
-                      <img 
-                        src={founder.image} 
+                      <img
+                        src={founder.image}
                         alt={founder.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                       />
@@ -172,7 +135,7 @@ export const About: React.FC = () => {
       <div className="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
         <div className="relative w-full h-full max-w-7xl mx-auto px-4 md:px-8 py-12 flex items-center justify-center">
           
-          {features.map((feature, index) => {
+          {about.features.map((feature, index) => {
             // Determine the target scale and position for each card based on index
             // We want the last card to end up on top
             // Range logic:
@@ -191,13 +154,13 @@ export const About: React.FC = () => {
             const rangeEnd = index * 0.5;
             
             return (
-              <Card 
+              <Card
                 key={feature.id}
                 feature={feature}
                 index={index}
-                total={features.length}
+                total={about.features.length}
                 progress={scrollYProgress}
-                range={[rangeStart, rangeEnd]} 
+                range={[rangeStart, rangeEnd]}
               />
             );
           })}
@@ -210,7 +173,7 @@ export const About: React.FC = () => {
 };
 
 interface CardProps {
-  feature: typeof features[0];
+  feature: typeof about.features[0];
   index: number;
   total: number;
   progress: MotionValue<number>;
@@ -296,7 +259,7 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
           
           <motion.div style={{ y: textY, opacity: textOpacity }} className="relative z-10">
             <span className="text-secondary/60 text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-sans block">
-              0{index + 1} — Philosophie
+              0{index + 1} — {about.cardCategoryLabel}
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-primary mb-4 sm:mb-6 leading-tight">
               {feature.title}
@@ -307,7 +270,7 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
             
             <div>
               <button className="group flex items-center gap-2 text-primary font-medium text-sm uppercase tracking-wider transition-colors">
-                <span className="border-b border-primary/20 pb-1 group-hover:border-primary transition-colors">Mehr erfahren</span>
+                <span className="border-b border-primary/20 pb-1 group-hover:border-primary transition-colors">{about.cardButtonText}</span>
                 <span className="transform group-hover:translate-x-1 transition-transform">→</span>
               </button>
             </div>

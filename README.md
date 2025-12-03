@@ -1,127 +1,331 @@
-<div align="center">
+# 🌐 Website Inhalt Bearbeiten - Anleitung
 
-# 🏢 Röllinger GmbH
+## ✨ Das Wichtigste zuerst
 
-### Modern Corporate Website
+**Sie müssen nur EINE einzige Datei bearbeiten:**
 
-A sophisticated, high-performance corporate website for Röllinger GmbH — a Swiss company specializing in facility management, renovation, and real estate services.
+📁 **[`WEBSITE_CONTENT.ts`](WEBSITE_CONTENT.ts)**
 
-[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23-FF0055?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+Diese Datei enthält **ALLE** Texte, Bilder und Inhalte der gesamten Website!
 
-</div>
+> 💡 **Vergessen Sie alles andere** – alle Änderungen passieren in dieser einen Datei.
 
 ---
 
-## ✨ Features
+## 📖 Inhaltsverzeichnis von WEBSITE_CONTENT.ts
 
-- **🎯 Smooth Scrolling** — Buttery-smooth scroll experience powered by [Lenis](https://lenis.darkroom.engineering/)
-- **🖱️ Custom Cursor** — Interactive cursor that responds to user interactions
-- **⚡ Preloader Animation** — Elegant loading sequence for premium feel
-- **🎬 Scroll Animations** — Dynamic animations triggered by scroll position using Framer Motion
-- **📱 Responsive Design** — Optimized for all devices and screen sizes
-- **🎨 Modern UI Components** — Glass cards, magnetic effects, text reveals, and more
-- **🔊 Noise Texture** — Subtle grain overlay for depth and character
+Die Datei ist übersichtlich in Abschnitte unterteilt:
 
-## 🏗️ Architecture
-
-```
-├── App.tsx                    # Main application component
-├── components/
-│   ├── Hero.tsx              # Hero section with main CTA
-│   ├── About.tsx             # ScrollyTelling about section
-│   ├── Services.tsx          # Soft grid services display
-│   ├── ParallaxSection.tsx   # Parallax scrolling section
-│   ├── Portfolio.tsx         # Project carousel
-│   ├── Testimonials.tsx      # Client testimonials
-│   ├── Contact.tsx           # Contact form section
-│   ├── Navigation.tsx        # Main navigation
-│   ├── Footer.tsx            # Site footer
-│   ├── SmoothScroll.tsx      # Lenis scroll wrapper
-│   └── ui/
-│       ├── CustomCursor.tsx  # Interactive cursor
-│       ├── GlassCard.tsx     # Glassmorphism card component
-│       ├── Magnetic.tsx      # Magnetic hover effect
-│       ├── Noise.tsx         # Grain texture overlay
-│       ├── Preloader.tsx     # Loading animation
-│       ├── Section.tsx       # Reusable section wrapper
-│       └── TextReveal.tsx    # Animated text reveal
-└── hooks/
-    └── useIsMobile.ts        # Mobile detection hook
-```
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- **Node.js** 18+ 
-- **npm** or **yarn**
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/festim-jetishi/festim-jetishi.github.io.git
-   cd festim-jetishi.github.io
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**
-   ```
-   http://localhost:5173
-   ```
-
-## 📦 Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with HMR |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build locally |
-
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| [React 19](https://react.dev/) | UI Framework |
-| [TypeScript](https://www.typescriptlang.org/) | Type Safety |
-| [Vite](https://vitejs.dev/) | Build Tool & Dev Server |
-| [Framer Motion](https://www.framer.com/motion/) | Animations |
-| [Lenis](https://lenis.darkroom.engineering/) | Smooth Scrolling |
-| [Lucide React](https://lucide.dev/) | Icons |
-
-## 🎨 Design Features
-
-### Visual Effects
-- **Glassmorphism** — Frosted glass UI elements
-- **Parallax Scrolling** — Multi-layer depth effects
-- **Magnetic Interactions** — Elements that follow cursor
-- **Text Reveal Animations** — Smooth character-by-character reveals
-
-### User Experience
-- **Progressive Loading** — Content loads as user scrolls
-- **Responsive Breakpoints** — Tailored layouts for mobile, tablet, desktop
-- **Performance Optimized** — Lazy loading and efficient re-renders
-
-## 📄 License
-
-This project is private and proprietary to Röllinger GmbH.
+| Zeile | Abschnitt | Was Sie dort finden |
+|-------|-----------|---------------------|
+| ~25 | 🏠 `navigation` | Menüpunkte, Firmenname, Logo |
+| ~64 | 🎯 `hero` | Startbild, Hauptüberschrift, Slogan |
+| ~111 | 👥 `about` | Über uns, Team, Statistiken, Philosophie |
+| ~239 | 🛠️ `services` | Alle Dienstleistungen |
+| ~349 | 🏗️ `portfolio` | Referenzprojekte |
+| ~432 | 💬 `testimonials` | Kundenstimmen |
+| ~491 | 📧 `contact` | Kontaktformular-Texte |
+| ~534 | 🦶 `footer` | Fusszeile, Kontaktdaten |
+| ~594 | 📜 `impressum` | Impressum-Seite |
+| ~727 | 🔒 `datenschutz` | Datenschutz-Seite |
 
 ---
 
-<div align="center">
+## 🎯 Goldene Regeln
 
-**Built with ❤️ in Switzerland 🇨🇭**
+### ✅ Das dürfen Sie tun:
 
-</div>
+1. **Texte ändern** – zwischen den Anführungszeichen `"..."`
+2. **Neue Einträge hinzufügen** – durch Kopieren bestehender Blöcke
+3. **Einträge löschen** – ganze `{ ... },` Blöcke entfernen
+
+### ❌ Das dürfen Sie NICHT tun:
+
+1. ~~Die Anführungszeichen `"` löschen~~
+2. ~~Kommas `,` oder Klammern `{ }` entfernen~~
+3. ~~Variablennamen ändern (z.B. `title:` oder `email:`)~~
+4. ~~Code ausserhalb von `"..."` bearbeiten~~
+
+---
+
+## 📝 Schritt-für-Schritt Anleitung
+
+### Schritt 1: Datei öffnen
+Öffnen Sie **[`WEBSITE_CONTENT.ts`](WEBSITE_CONTENT.ts)** in Ihrem Editor (z.B. VS Code).
+
+### Schritt 2: Text finden
+Nutzen Sie `Ctrl + F` (Windows) oder `Cmd + F` (Mac) und suchen Sie nach dem Text, den Sie ändern möchten.
+
+### Schritt 3: Nur den Text ändern
+
+```javascript
+// VORHER:
+phoneDisplay: "076 511 21 23",
+
+// NACHHER:
+phoneDisplay: "079 123 45 67",
+```
+
+⚠️ **Wichtig:** Nur den Text zwischen `"..."` ändern!
+
+### Schritt 4: Speichern
+Drücken Sie `Ctrl + S` (Windows) oder `Cmd + S` (Mac).
+
+---
+
+## 💡 Häufige Aufgaben mit Beispielen
+
+### 📞 Telefonnummer ändern
+
+**Suchen Sie nach:** `phoneDisplay` oder `phoneLink`
+
+```javascript
+// Im footer-Bereich (ca. Zeile 562):
+phoneDisplay: "076 511 21 23",      // ← Angezeigte Nummer
+phoneLink: "+41765112123",          // ← Für Anruf-Button (ohne Leerzeichen)
+
+// Ändern zu:
+phoneDisplay: "079 123 45 67",
+phoneLink: "+41791234567",
+```
+
+> ⚠️ Ändern Sie BEIDE Werte!
+
+---
+
+### 📧 E-Mail-Adresse ändern
+
+**Suchen Sie nach:** `email`
+
+```javascript
+// Im footer-Bereich (ca. Zeile 559):
+email: "info@roellinger.ch",
+
+// Ändern zu:
+email: "kontakt@roellinger.ch",
+```
+
+---
+
+### 🏠 Adresse ändern
+
+**Suchen Sie nach:** `address`
+
+```javascript
+// Im footer-Bereich (ca. Zeile 556):
+address: "Pilatusstrasse 4, 6340 Baar",
+
+// Ändern zu:
+address: "Neuestrasse 10, 6300 Zug",
+```
+
+---
+
+### ➕ Neue Dienstleistung hinzufügen
+
+**Gehen Sie zu:** Abschnitt `services` → `items` (ca. Zeile 291)
+
+**1. Kopieren Sie einen bestehenden Block:**
+```javascript
+{
+  id: 6,
+  title: "Immobilien",
+  label: "Handel",
+  description: "Kompetente Beratung bei Kauf und Verkauf.",
+  icon: "shovel",
+  image: "https://images.unsplash.com/...",
+},
+```
+
+**2. Fügen Sie ihn am Ende ein (vor der `]`) mit neuer ID:**
+```javascript
+{
+  id: 7,                    // ← Neue, einzigartige Nummer
+  title: "Winterdienst",    // ← Neuer Titel
+  label: "Saisonal",        // ← Neues Label
+  description: "Professionelle Schneeräumung für Ihre Liegenschaft.",
+  icon: "sparkles",         // ← Icon aus der Liste unten
+  image: "https://images.unsplash.com/photo-1491002052546-bf38f186af56",
+},
+```
+
+**🎨 Verfügbare Icons:**
+| Icon | Bedeutung | Icon | Bedeutung |
+|------|-----------|------|-----------|
+| `"home"` | 🏠 Haus | `"leaf"` | 🍃 Garten |
+| `"hammer"` | 🔨 Bau | `"trash"` | 🗑️ Entsorgung |
+| `"building"` | 🏢 Gebäude | `"shovel"` | ⛏️ Schaufel |
+| `"wrench"` | 🔧 Reparatur | `"paintbrush"` | 🖌️ Maler |
+| `"shield"` | 🛡️ Sicherheit | `"truck"` | 🚚 Transport |
+| `"users"` | 👥 Team | `"settings"` | ⚙️ Technik |
+| `"sparkles"` | ✨ Reinigung | `"tree"` | 🌳 Baum |
+
+---
+
+### ➕ Neues Projekt hinzufügen
+
+**Gehen Sie zu:** Abschnitt `portfolio` → `projects` (ca. Zeile 382)
+
+```javascript
+// Neuen Block am Ende einfügen (vor der ]):
+{
+  id: 6,                           // ← Neue, einzigartige Nummer
+  title: "Einfamilienhaus Muster", // ← Projektname
+  category: "Renovation",          // ← Kategorie
+  location: "Baar",                // ← Ort
+  description: "Komplette Innenrenovation mit energetischer Sanierung.",
+  image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
+},
+```
+
+---
+
+### ➕ Neue Kundenstimme hinzufügen
+
+**Gehen Sie zu:** Abschnitt `testimonials` → `items` (ca. Zeile 457)
+
+```javascript
+// Neuen Block am Ende einfügen (vor der ]):
+{
+  quote: "Schnelle und saubere Arbeit. Sehr zu empfehlen!",
+  author: "Peter Keller",
+},
+```
+
+---
+
+### ➕ Neues Team-Mitglied hinzufügen
+
+**Gehen Sie zu:** Abschnitt `about` → `founders` (ca. Zeile 173)
+
+```javascript
+// Neuen Block am Ende einfügen (vor der ]):
+{
+  name: "Maria Beispiel",
+  role: "Projektleitung",
+  image: "https://images.unsplash.com/...",
+  description: "Die Organisatorin mit Blick für Details.",
+},
+```
+
+---
+
+### ❌ Eintrag löschen
+
+Um einen Eintrag zu entfernen, löschen Sie den gesamten Block von `{` bis `},`:
+
+```javascript
+// VORHER:
+items: [
+  { quote: "Tolle Arbeit!", author: "Max" },
+  { quote: "Sehr zufrieden.", author: "Erika" },  // ← Diese Zeile löschen
+  { quote: "Empfehlenswert!", author: "Hans" },
+],
+
+// NACHHER:
+items: [
+  { quote: "Tolle Arbeit!", author: "Max" },
+  { quote: "Empfehlenswert!", author: "Hans" },
+],
+```
+
+---
+
+## ⚠️ Wichtige Warnungen
+
+### 🔤 Nur gerade Anführungszeichen verwenden!
+
+| Symbol | Verwenden? |
+|--------|------------|
+| `"` | ✅ JA – Gerade Anführungszeichen |
+| `„` `"` | ❌ NEIN – Deutsche Anführungszeichen |
+| `'` | ❌ NEIN – Einfache Anführungszeichen |
+
+### 🔢 IDs müssen einzigartig sein!
+
+```javascript
+// ✅ RICHTIG:
+{ id: 1, title: "..." },
+{ id: 2, title: "..." },
+{ id: 3, title: "..." },
+
+// ❌ FALSCH:
+{ id: 1, title: "..." },
+{ id: 1, title: "..." },  // ← ID 1 bereits vergeben!
+```
+
+### , Kommas nicht vergessen!
+
+Jeder Block endet mit `},` (Komma nach der Klammer):
+
+```javascript
+// ✅ RICHTIG:
+{
+  title: "Eins",
+},  // ← Komma hier!
+{
+  title: "Zwei",
+},
+
+// ❌ FALSCH:
+{
+  title: "Eins",
+}   // ← FEHLENDES KOMMA!
+{
+  title: "Zwei",
+},
+```
+
+---
+
+## 🆘 Hilfe bei Problemen
+
+### 😱 "Die Website funktioniert nicht mehr!"
+
+**Keine Panik!** So beheben Sie das Problem:
+
+#### Option A: Rückgängig machen
+Drücken Sie mehrmals `Ctrl + Z` (Windows) oder `Cmd + Z` (Mac).
+
+#### Option B: Git verwenden
+```bash
+git checkout -- WEBSITE_CONTENT.ts
+```
+
+### 🔍 Häufige Fehler
+
+| Symptom | Ursache | Lösung |
+|---------|---------|--------|
+| Seite lädt nicht | Fehlende `"` | Alle Texte in `"..."` einschliessen |
+| Fehler im Terminal | Fehlendes `,` | Komma nach jeder `}` prüfen |
+| Seltsame Zeichen | Falsche Anführungszeichen | Nur `"` verwenden, nicht `„` |
+
+---
+
+## ✅ Checkliste vor dem Speichern
+
+- [ ] Nur Text zwischen `"..."` geändert?
+- [ ] Alle Kommas `,` vorhanden?
+- [ ] Bei neuen Einträgen: ID einzigartig?
+- [ ] Gerade Anführungszeichen `"` verwendet?
+- [ ] Datei gespeichert (`Ctrl + S`)?
+
+---
+
+## 📋 Schnellreferenz
+
+| Aufgabe | Suchen nach | Abschnitt |
+|---------|-------------|-----------|
+| Telefon ändern | `phoneDisplay` | `footer` |
+| E-Mail ändern | `email:` | `footer` |
+| Adresse ändern | `address:` | `footer` |
+| Haupttext ändern | `taglinePart1` | `hero` |
+| Slogan ändern | `subtitle:` | `hero` |
+| Service hinzufügen | `items: [` | `services` |
+| Projekt hinzufügen | `projects: [` | `portfolio` |
+| Kundenstimme hinzufügen | `items: [` | `testimonials` |
+| Team-Mitglied hinzufügen | `founders: [` | `about` |
+
+---
+
+**Viel Erfolg! 🎉**

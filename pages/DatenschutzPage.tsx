@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield, User, Database, Target, Scale, Clock, Share2, Cookie, UserCheck, Lock, RefreshCw } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { TextReveal } from '../components/ui/TextReveal';
+import { datenschutz } from '../WEBSITE_CONTENT';
+
+// 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
 interface SectionData {
   id: string;
@@ -14,47 +17,43 @@ interface SectionData {
 
 const sections: SectionData[] = [
   {
-    id: 'allgemein',
-    number: '01',
+    id: datenschutz.section01.id,
+    number: datenschutz.section01.number,
     icon: Shield,
-    title: 'Allgemeine Hinweise',
+    title: datenschutz.section01.title,
     content: (
       <>
-        <p>
-          Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Mit dieser Datenschutzerklärung informieren wir Sie darüber, welche Personendaten wir im Zusammenhang mit unseren Tätigkeiten, einschliesslich unserer Website, bearbeiten.
-        </p>
-        <p>
-          Diese Datenschutzerklärung richtet sich nach dem Schweizerischen Datenschutzgesetz (DSG) und, soweit anwendbar, der EU-Datenschutz-Grundverordnung (DSGVO).
-        </p>
+        <p>{datenschutz.section01.paragraph1}</p>
+        <p>{datenschutz.section01.paragraph2}</p>
       </>
     )
   },
   {
-    id: 'verantwortlicher',
-    number: '02',
+    id: datenschutz.section02.id,
+    number: datenschutz.section02.number,
     icon: User,
-    title: 'Verantwortlicher',
+    title: datenschutz.section02.title,
     content: (
       <>
-        <p className="mb-4">Verantwortlich für die Datenbearbeitung ist:</p>
+        <p className="mb-4">{datenschutz.section02.intro}</p>
         <div className="bg-white/5 rounded-xl p-6 border border-white/10">
-          <p className="text-white font-semibold text-lg mb-3">Röllinger GmbH</p>
+          <p className="text-white font-semibold text-lg mb-3">{datenschutz.companyName}</p>
           <p className="text-white/70">
-            Pilatusstrasse 4<br />
-            6340 Baar<br />
-            Schweiz
+            {datenschutz.companyStreet}<br />
+            {datenschutz.companyCity}<br />
+            {datenschutz.companyCountry}
           </p>
           <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
             <p>
-              <span className="text-white/50 text-sm">E-Mail: </span>
-              <a href="mailto:info@roellinger.ch" className="text-brand-green hover:text-brand-green/80 transition-colors">
-                info@roellinger.ch
+              <span className="text-white/50 text-sm">{datenschutz.emailLabel} </span>
+              <a href={`mailto:${datenschutz.emailAddress}`} className="text-brand-green hover:text-brand-green/80 transition-colors">
+                {datenschutz.emailAddress}
               </a>
             </p>
             <p>
-              <span className="text-white/50 text-sm">Telefon: </span>
-              <a href="tel:+41765112123" className="text-brand-green hover:text-brand-green/80 transition-colors">
-                076 511 21 23
+              <span className="text-white/50 text-sm">{datenschutz.phoneLabel} </span>
+              <a href={`tel:${datenschutz.phoneLink}`} className="text-brand-green hover:text-brand-green/80 transition-colors">
+                {datenschutz.phoneDisplay}
               </a>
             </p>
           </div>
@@ -63,45 +62,35 @@ const sections: SectionData[] = [
     )
   },
   {
-    id: 'erhebung',
-    number: '03',
+    id: datenschutz.section03.id,
+    number: datenschutz.section03.number,
     icon: Database,
-    title: 'Erhebung und Bearbeitung von Personendaten',
+    title: datenschutz.section03.title,
     content: (
       <>
         <div className="space-y-6">
           <div className="border-l-2 border-brand-green/30 pl-4">
-            <h4 className="text-white font-medium mb-2">3.1 Kontaktaufnahme</h4>
-            <p className="text-sm">
-              Wenn Sie uns per Kontaktformular, E-Mail oder Telefon kontaktieren, erheben wir die von Ihnen mitgeteilten Daten (z.B. Name, E-Mail-Adresse, Telefonnummer, Nachrichteninhalt). Diese Daten verwenden wir ausschliesslich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme mit Ihnen.
-            </p>
+            <h4 className="text-white font-medium mb-2">{datenschutz.section03.sub1Title}</h4>
+            <p className="text-sm">{datenschutz.section03.sub1Text}</p>
           </div>
           <div className="border-l-2 border-brand-green/30 pl-4">
-            <h4 className="text-white font-medium mb-2">3.2 Nutzung unserer Website</h4>
-            <p className="text-sm">
-              Beim Besuch unserer Website werden automatisch technische Daten erfasst, die Ihr Browser an unseren Server übermittelt. Dies können sein: IP-Adresse, Browsertyp und -version, Betriebssystem, Referrer-URL, Datum und Uhrzeit des Zugriffs.
-            </p>
+            <h4 className="text-white font-medium mb-2">{datenschutz.section03.sub2Title}</h4>
+            <p className="text-sm">{datenschutz.section03.sub2Text}</p>
           </div>
         </div>
       </>
     )
   },
   {
-    id: 'zweck',
-    number: '04',
+    id: datenschutz.section04.id,
+    number: datenschutz.section04.number,
     icon: Target,
-    title: 'Zweck der Datenbearbeitung',
+    title: datenschutz.section04.title,
     content: (
       <>
-        <p className="mb-4">Wir bearbeiten Ihre Personendaten zu folgenden Zwecken:</p>
+        <p className="mb-4">{datenschutz.section04.intro}</p>
         <ul className="space-y-3">
-          {[
-            'Beantwortung von Anfragen und Kommunikation mit Ihnen',
-            'Erstellung von Offerten und Abwicklung von Aufträgen',
-            'Erbringung unserer Dienstleistungen im Bereich Hauswartung, Gartenpflege und Bau',
-            'Gewährleistung des technischen Betriebs unserer Website',
-            'Erfüllung gesetzlicher Pflichten'
-          ].map((item, i) => (
+          {datenschutz.section04.purposes.map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 flex-shrink-0" />
               <span>{item}</span>
@@ -112,20 +101,15 @@ const sections: SectionData[] = [
     )
   },
   {
-    id: 'rechtsgrundlage',
-    number: '05',
+    id: datenschutz.section05.id,
+    number: datenschutz.section05.number,
     icon: Scale,
-    title: 'Rechtsgrundlage',
+    title: datenschutz.section05.title,
     content: (
       <>
-        <p className="mb-4">Die Bearbeitung Ihrer Daten erfolgt auf folgenden Rechtsgrundlagen:</p>
+        <p className="mb-4">{datenschutz.section05.intro}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            { title: 'Einwilligung', desc: 'Wenn Sie uns Ihre Daten freiwillig mitteilen (z.B. über das Kontaktformular)' },
-            { title: 'Vertragserfüllung', desc: 'Zur Durchführung vorvertraglicher Massnahmen oder Erfüllung eines Vertrags' },
-            { title: 'Berechtigte Interessen', desc: 'Zur Wahrung unserer berechtigten Geschäftsinteressen' },
-            { title: 'Gesetzliche Pflichten', desc: 'Zur Erfüllung rechtlicher Verpflichtungen' }
-          ].map((item, i) => (
+          {datenschutz.section05.legalBases.map((item, i) => (
             <div key={i} className="bg-white/5 rounded-lg p-4 border border-white/10">
               <h4 className="text-brand-green font-medium text-sm mb-1">{item.title}</h4>
               <p className="text-sm text-white/60">{item.desc}</p>
@@ -136,31 +120,24 @@ const sections: SectionData[] = [
     )
   },
   {
-    id: 'speicherdauer',
-    number: '06',
+    id: datenschutz.section06.id,
+    number: datenschutz.section06.number,
     icon: Clock,
-    title: 'Speicherdauer',
+    title: datenschutz.section06.title,
     content: (
-      <p>
-        Wir speichern Ihre Personendaten nur so lange, wie es für die Erfüllung der Zwecke, für die sie erhoben wurden, erforderlich ist oder wie es gesetzliche Aufbewahrungspflichten vorsehen. Anfragen über das Kontaktformular werden nach Abschluss der Bearbeitung und nach Ablauf allfälliger Aufbewahrungsfristen gelöscht.
-      </p>
+      <p>{datenschutz.section06.text}</p>
     )
   },
   {
-    id: 'weitergabe',
-    number: '07',
+    id: datenschutz.section07.id,
+    number: datenschutz.section07.number,
     icon: Share2,
-    title: 'Weitergabe von Daten',
+    title: datenschutz.section07.title,
     content: (
       <>
-        <p className="mb-4">Wir geben Ihre Personendaten nur weiter, wenn:</p>
+        <p className="mb-4">{datenschutz.section07.intro}</p>
         <ul className="space-y-2 mb-6">
-          {[
-            'Sie ausdrücklich eingewilligt haben',
-            'Es für die Vertragserfüllung erforderlich ist',
-            'Eine gesetzliche Verpflichtung besteht',
-            'Es zur Wahrung berechtigter Interessen erforderlich und zulässig ist'
-          ].map((item, i) => (
+          {datenschutz.section07.conditions.map((item, i) => (
             <li key={i} className="flex items-start gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-green mt-2 flex-shrink-0" />
               <span>{item}</span>
@@ -169,42 +146,35 @@ const sections: SectionData[] = [
         </ul>
         <div className="bg-white/5 rounded-lg p-4 border border-white/10">
           <p className="text-sm text-white/60">
-            <span className="text-white/80">Hinweis:</span> Unsere Website wird auf GitHub Pages gehostet. Dabei können technische Daten auf Servern von GitHub, Inc. (USA) verarbeitet werden.
+            <span className="text-white/80">{datenschutz.section07.noteLabel}</span> {datenschutz.section07.noteText}
           </p>
         </div>
       </>
     )
   },
   {
-    id: 'cookies',
-    number: '08',
+    id: datenschutz.section08.id,
+    number: datenschutz.section08.number,
     icon: Cookie,
-    title: 'Cookies',
+    title: datenschutz.section08.title,
     content: (
       <div className="bg-gradient-to-br from-brand-green/10 to-transparent rounded-xl p-6 border border-brand-green/20">
         <p>
-          Unsere Website verwendet <span className="text-white font-medium">keine Tracking-Cookies</span> oder Analyse-Tools. Es werden lediglich technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
+          Unsere Website verwendet <span className="text-white font-medium">{datenschutz.section08.highlightedText}</span> oder Analyse-Tools. Es werden lediglich technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
         </p>
       </div>
     )
   },
   {
-    id: 'rechte',
-    number: '09',
+    id: datenschutz.section09.id,
+    number: datenschutz.section09.number,
     icon: UserCheck,
-    title: 'Ihre Rechte',
+    title: datenschutz.section09.title,
     content: (
       <>
-        <p className="mb-6">Sie haben folgende Rechte in Bezug auf Ihre Personendaten:</p>
+        <p className="mb-6">{datenschutz.section09.intro}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          {[
-            { title: 'Auskunftsrecht', desc: 'Sie können Auskunft über Ihre bei uns gespeicherten Daten verlangen' },
-            { title: 'Berichtigungsrecht', desc: 'Sie können die Berichtigung unrichtiger Daten verlangen' },
-            { title: 'Löschungsrecht', desc: 'Sie können die Löschung Ihrer Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen' },
-            { title: 'Einschränkung', desc: 'Sie können unter bestimmten Umständen die Einschränkung der Datenbearbeitung verlangen' },
-            { title: 'Widerspruchsrecht', desc: 'Sie können der Bearbeitung Ihrer Daten widersprechen' },
-            { title: 'Datenübertragbarkeit', desc: 'Sie können die Herausgabe Ihrer Daten in einem gängigen Format verlangen' }
-          ].map((item, i) => (
+          {datenschutz.section09.rights.map((item, i) => (
             <div key={i} className="flex items-start gap-3 bg-white/5 rounded-lg p-4 border border-white/10">
               <span className="text-brand-green font-bold text-xs mt-0.5">✓</span>
               <div>
@@ -215,37 +185,35 @@ const sections: SectionData[] = [
           ))}
         </div>
         <p className="text-sm">
-          Um diese Rechte auszuüben, wenden Sie sich bitte an:{' '}
-          <a href="mailto:info@roellinger.ch" className="text-brand-green hover:underline">info@roellinger.ch</a>
+          {datenschutz.section09.contactText}{' '}
+          <a href={`mailto:${datenschutz.emailAddress}`} className="text-brand-green hover:underline">{datenschutz.emailAddress}</a>
         </p>
       </>
     )
   },
   {
-    id: 'sicherheit',
-    number: '10',
+    id: datenschutz.section10.id,
+    number: datenschutz.section10.number,
     icon: Lock,
-    title: 'Datensicherheit',
+    title: datenschutz.section10.title,
     content: (
       <div className="flex items-start gap-4">
         <div className="p-3 bg-brand-green/20 rounded-xl flex-shrink-0">
           <Lock className="w-6 h-6 text-brand-green" />
         </div>
         <p>
-          Wir treffen angemessene technische und organisatorische Sicherheitsmassnahmen, um Ihre Personendaten vor unberechtigtem Zugriff, Verlust oder Missbrauch zu schützen. Unsere Website verwendet <span className="text-brand-green font-medium">HTTPS-Verschlüsselung</span> für eine sichere Datenübertragung.
+          Wir treffen angemessene technische und organisatorische Sicherheitsmassnahmen, um Ihre Personendaten vor unberechtigtem Zugriff, Verlust oder Missbrauch zu schützen. Unsere Website verwendet <span className="text-brand-green font-medium">{datenschutz.section10.highlightedText}</span> für eine sichere Datenübertragung.
         </p>
       </div>
     )
   },
   {
-    id: 'aenderungen',
-    number: '11',
+    id: datenschutz.section11.id,
+    number: datenschutz.section11.number,
     icon: RefreshCw,
-    title: 'Änderungen dieser Datenschutzerklärung',
+    title: datenschutz.section11.title,
     content: (
-      <p>
-        Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen. Die aktuelle Version ist auf unserer Website verfügbar. Bei wesentlichen Änderungen werden wir Sie in geeigneter Weise informieren.
-      </p>
+      <p>{datenschutz.section11.text}</p>
     )
   }
 ];
@@ -258,7 +226,7 @@ const TableOfContents: React.FC<{ activeSection: string }> = ({ activeSection })
     className="hidden xl:block fixed left-8 top-1/2 -translate-y-1/2 z-40"
   >
     <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4">
-      <span className="text-[10px] uppercase tracking-widest text-white/40 mb-3 block">Inhalt</span>
+      <span className="text-[10px] uppercase tracking-widest text-white/40 mb-3 block">{datenschutz.tableOfContentsLabel}</span>
       <div className="space-y-1">
         {sections.map((section) => (
           <div
@@ -278,7 +246,7 @@ const TableOfContents: React.FC<{ activeSection: string }> = ({ activeSection })
 );
 
 export const DatenschutzPage: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('allgemein');
+  const [activeSection, setActiveSection] = useState(datenschutz.section01.id);
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 500], [0, 150]);
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
@@ -340,14 +308,14 @@ export const DatenschutzPage: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="inline-flex items-center gap-3 text-white/60 hover:text-brand-green transition-colors mb-12 group"
             >
               <span className="p-2 rounded-full border border-white/20 group-hover:border-brand-green/50 transition-colors">
                 <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
               </span>
-              <span className="text-sm uppercase tracking-[0.2em] font-medium">Zurück zur Startseite</span>
+              <span className="text-sm uppercase tracking-[0.2em] font-medium">{datenschutz.backLinkText}</span>
             </Link>
           </motion.div>
 
@@ -360,11 +328,11 @@ export const DatenschutzPage: React.FC = () => {
               className="inline-block text-brand-green text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-3"
             >
               <span className="w-12 h-[1px] bg-brand-green"></span>
-              Rechtliches
+              {datenschutz.sectionLabel}
             </motion.span>
             
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-6">
-              <TextReveal delay={0.4} animateOnMount>Datenschutz</TextReveal>
+              <TextReveal delay={0.4} animateOnMount>{datenschutz.pageTitle}</TextReveal>
             </h1>
             
             <motion.p
@@ -373,7 +341,7 @@ export const DatenschutzPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="text-xl md:text-2xl text-white/60 font-light max-w-2xl"
             >
-              Informationen zum Schutz Ihrer persönlichen Daten gemäss DSG und DSGVO
+              {datenschutz.pageSubtitle}
             </motion.p>
           </div>
 
@@ -386,15 +354,15 @@ export const DatenschutzPage: React.FC = () => {
           >
             <div>
               <span className="block text-3xl font-serif text-white mb-1">{sections.length}</span>
-              <span className="text-xs uppercase tracking-widest text-white/40">Abschnitte</span>
+              <span className="text-xs uppercase tracking-widest text-white/40">{datenschutz.sectionsStatLabel}</span>
             </div>
             <div>
-              <span className="block text-3xl font-serif text-white mb-1">DSG</span>
-              <span className="text-xs uppercase tracking-widest text-white/40">Konform</span>
+              <span className="block text-3xl font-serif text-white mb-1">{datenschutz.dsgLabel}</span>
+              <span className="text-xs uppercase tracking-widest text-white/40">{datenschutz.dsgSubLabel}</span>
             </div>
             <div>
-              <span className="block text-3xl font-serif text-white mb-1">DSGVO</span>
-              <span className="text-xs uppercase tracking-widest text-white/40">Konform</span>
+              <span className="block text-3xl font-serif text-white mb-1">{datenschutz.dsgvoLabel}</span>
+              <span className="text-xs uppercase tracking-widest text-white/40">{datenschutz.dsgvoSubLabel}</span>
             </div>
           </motion.div>
         </motion.div>
@@ -453,7 +421,7 @@ export const DatenschutzPage: React.FC = () => {
             className="text-center mt-16 max-w-4xl mx-auto"
           >
             <span className="inline-block px-6 py-3 rounded-full border border-white/10 text-white/40 text-sm">
-              Stand: Dezember 2025
+              {datenschutz.lastUpdated}
             </span>
           </motion.div>
         </div>

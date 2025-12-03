@@ -1,67 +1,57 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Home, Leaf, Hammer, Trash2, Building2, Shovel, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { Home, Leaf, Hammer, Trash2, Building2, Shovel, ArrowRight, ArrowUpRight, Wrench, Paintbrush, Shield, Truck, Users, Settings, Sparkles, TreeDeciduous, LucideIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { services } from '../WEBSITE_CONTENT';
 
-interface Service {
+// 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
+
+// Icon mapping - converts string names to actual icon components
+const iconMap: Record<string, LucideIcon> = {
+  home: Home,
+  leaf: Leaf,
+  hammer: Hammer,
+  trash: Trash2,
+  building: Building2,
+  shovel: Shovel,
+  wrench: Wrench,
+  paintbrush: Paintbrush,
+  shield: Shield,
+  truck: Truck,
+  users: Users,
+  settings: Settings,
+  sparkles: Sparkles,
+  tree: TreeDeciduous,
+};
+
+// Helper function to get icon component from string name
+const getIcon = (iconName: string): LucideIcon => {
+  return iconMap[iconName.toLowerCase()] || Home;
+};
+
+interface ServiceData {
   id: number;
   title: string;
   label: string;
   description: string;
-  icon: React.ElementType;
+  icon: string;
   image: string;
 }
 
-const services: Service[] = [
-  {
-    id: 1,
-    title: 'Hauswartung',
-    label: '24/7 Service',
-    description: 'Umfassende Betreuung Ihrer Liegenschaften mit höchster Sorgfalt. Von der technischen Überwachung bis zur Reinigung sorgen wir für Werterhalt und gepflegte Atmosphäre – rund um die Uhr.',
-    icon: Home,
-    image: 'https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    id: 2,
-    title: 'Gartenpflege',
-    label: 'Grünflächen',
-    description: 'Kreative Gestaltung und nachhaltiger Unterhalt Ihrer Gartenanlagen. Wir verwandeln Aussenbereiche in lebendige Oasen, die zu jeder Jahreszeit Freude bereiten.',
-    icon: Leaf,
-    image: 'https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    id: 3,
-    title: 'Umbauten',
-    label: 'Renovation',
-    description: 'Fachgerechte Planung und Ausführung von Umbau- und Renovationsprojekten. Wir begleiten Sie von der ersten Idee bis zur schlüsselfertigen Übergabe.',
-    icon: Hammer,
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    id: 4,
-    title: 'Management',
-    label: 'Facility',
-    description: 'Ganzheitliches Facility Management für den Werterhalt Ihrer Immobilien. Wir optimieren Betriebsabläufe und senken Kosten durch intelligente Bewirtschaftung.',
-    icon: Building2,
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    id: 5,
-    title: 'Rückbau',
-    label: 'Entsorgung',
-    description: 'Sicherer Rückbau und umweltgerechte Entsorgung. Wir schaffen Platz für Neues und garantieren eine saubere, vorschriftsgemässe Trennung aller Materialien.',
-    icon: Trash2,
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80'
-  },
-  {
-    id: 6,
-    title: 'Immobilien',
-    label: 'Handel',
-    description: 'Kompetente Beratung bei Kauf und Verkauf. Wir unterstützen Sie mit Marktkenntnis und Diskretion bei Ihren Immobiliengeschäften.',
-    icon: Shovel,
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80'
-  },
-];
+interface ProcessedService {
+  id: number;
+  title: string;
+  label: string;
+  description: string;
+  icon: LucideIcon;
+  image: string;
+}
+
+// Process services to convert icon strings to components
+const processedServices: ProcessedService[] = services.items.map(service => ({
+  ...service,
+  icon: getIcon(service.icon),
+}));
 
 export const Services: React.FC = () => {
   const [activeService, setActiveService] = useState<number>(1);
@@ -74,11 +64,11 @@ export const Services: React.FC = () => {
         <div className="mb-16 md:mb-24 md:pl-8">
            <span className="text-brand-green font-bold uppercase tracking-[0.2em] text-xs mb-6 block flex items-center gap-2">
               <span className="w-8 h-[1px] bg-brand-green"></span>
-              Unsere Expertise
+              {services.sectionLabel}
             </span>
             <h2 className="font-serif text-4xl md:text-6xl text-primary leading-[1.1]">
-              Kompetenz in <br/>
-              <span className="text-stone-400">jedem Bereich.</span>
+              {services.sectionTitleLine1} <br/>
+              <span className="text-stone-400">{services.sectionTitleLine2}</span>
             </h2>
         </div>
 
@@ -86,7 +76,7 @@ export const Services: React.FC = () => {
           
           {/* Left Column: Service List */}
           <div className="w-full lg:w-1/2 flex flex-col gap-2">
-            {services.map((service) => (
+            {processedServices.map((service) => (
               <ServiceItem 
                 key={service.id} 
                 service={service} 
@@ -109,7 +99,7 @@ export const Services: React.FC = () => {
                     className="absolute inset-0"
                   >
                     <img 
-                      src={services.find(s => s.id === activeService)?.image} 
+                      src={processedServices.find(s => s.id === activeService)?.image} 
                       alt="Service Preview" 
                       className="w-full h-full object-cover"
                     />
@@ -119,14 +109,14 @@ export const Services: React.FC = () => {
                     <div className="absolute bottom-0 left-0 p-10 text-white">
                       <div className="flex items-center gap-3 mb-4">
                           <div className="p-2 bg-white/20 backdrop-blur-md rounded-lg">
-                            {React.createElement(services.find(s => s.id === activeService)!.icon, { className: "w-6 h-6" })}
+                            {React.createElement(processedServices.find(s => s.id === activeService)!.icon, { className: "w-6 h-6" })}
                           </div>
                           <span className="uppercase tracking-widest text-sm font-medium">
-                            {services.find(s => s.id === activeService)?.label}
+                            {processedServices.find(s => s.id === activeService)?.label}
                           </span>
                       </div>
                       <h3 className="text-3xl font-serif">
-                          {services.find(s => s.id === activeService)?.title}
+                          {processedServices.find(s => s.id === activeService)?.title}
                       </h3>
                     </div>
                   </motion.div>
@@ -141,7 +131,7 @@ export const Services: React.FC = () => {
 };
 
 interface ServiceItemProps {
-  service: Service;
+  service: ProcessedService;
   isActive: boolean;
   onActivate: () => void;
 }
@@ -202,7 +192,7 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ service, isActive, onActivate
             </p>
             
             <div className="flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-wider group/link">
-              <span>Details ansehen</span>
+              <span>{services.detailsButtonText}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
             </div>
             

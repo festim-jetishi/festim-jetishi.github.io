@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, Building2, Phone, Mail, FileText, Scale, Shield, Copyright } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { TextReveal } from '../components/ui/TextReveal';
+import { impressum } from '../WEBSITE_CONTENT';
+
+// 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -75,7 +78,7 @@ export const ImpressumPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-end overflow-hidden">
         {/* Background with parallax */}
-        <motion.div 
+        <motion.div
           style={{ y: heroY }}
           className="absolute inset-0 z-0"
         >
@@ -88,7 +91,7 @@ export const ImpressumPage: React.FC = () => {
         </motion.div>
         
         {/* Hero Content */}
-        <motion.div 
+        <motion.div
           style={{ opacity: heroOpacity }}
           className="relative z-10 container mx-auto px-6 md:px-12 pb-16 pt-32"
         >
@@ -98,14 +101,14 @@ export const ImpressumPage: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="inline-flex items-center gap-3 text-white/60 hover:text-brand-green transition-colors mb-12 group"
             >
               <span className="p-2 rounded-full border border-white/20 group-hover:border-brand-green/50 transition-colors">
                 <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
               </span>
-              <span className="text-sm uppercase tracking-[0.2em] font-medium">Zurück zur Startseite</span>
+              <span className="text-sm uppercase tracking-[0.2em] font-medium">{impressum.backLinkText}</span>
             </Link>
           </motion.div>
 
@@ -118,11 +121,11 @@ export const ImpressumPage: React.FC = () => {
               className="inline-block text-brand-green text-xs font-bold tracking-[0.3em] uppercase mb-6 flex items-center gap-3"
             >
               <span className="w-12 h-[1px] bg-brand-green"></span>
-              Rechtliches
+              {impressum.sectionLabel}
             </motion.span>
             
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-6">
-              <TextReveal delay={0.4} animateOnMount>Impressum</TextReveal>
+              <TextReveal delay={0.4} animateOnMount>{impressum.pageTitle}</TextReveal>
             </h1>
             
             <motion.p
@@ -131,7 +134,7 @@ export const ImpressumPage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="text-xl md:text-2xl text-white/60 font-light max-w-2xl"
             >
-              Angaben gemäss Art. 3 des Bundesgesetzes gegen den unlauteren Wettbewerb (UWG)
+              {impressum.pageSubtitle}
             </motion.p>
           </div>
         </motion.div>
@@ -151,27 +154,27 @@ export const ImpressumPage: React.FC = () => {
             className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto"
           >
             {/* Company Information */}
-            <ContentCard icon={Building2} title="Firmenangaben" index={0}>
+            <ContentCard icon={Building2} title={impressum.companyCardTitle} index={0}>
               <p className="text-lg">
-                <span className="text-white font-semibold text-xl block mb-3">Röllinger GmbH</span>
-                Pilatusstrasse 4<br />
-                6340 Baar<br />
-                Schweiz
+                <span className="text-white font-semibold text-xl block mb-3">{impressum.companyName}</span>
+                {impressum.companyStreet}<br />
+                {impressum.companyCity}<br />
+                {impressum.companyCountry}
               </p>
             </ContentCard>
 
             {/* Contact */}
-            <ContentCard icon={Phone} title="Kontakt" index={1}>
+            <ContentCard icon={Phone} title={impressum.contactCardTitle} index={1}>
               <p>
-                <span className="text-white/50 text-sm uppercase tracking-wider block mb-1">Telefon</span>
-                <a href="tel:+41765112123" className="text-brand-green hover:text-brand-green/80 transition-colors text-lg">
-                  076 511 21 23
+                <span className="text-white/50 text-sm uppercase tracking-wider block mb-1">{impressum.phoneLabel}</span>
+                <a href={`tel:${impressum.phoneLink}`} className="text-brand-green hover:text-brand-green/80 transition-colors text-lg">
+                  {impressum.phoneDisplay}
                 </a>
               </p>
               <p>
-                <span className="text-white/50 text-sm uppercase tracking-wider block mb-1">E-Mail</span>
-                <a href="mailto:info@roellinger.ch" className="text-brand-green hover:text-brand-green/80 transition-colors text-lg">
-                  info@roellinger.ch
+                <span className="text-white/50 text-sm uppercase tracking-wider block mb-1">{impressum.emailLabel}</span>
+                <a href={`mailto:${impressum.emailAddress}`} className="text-brand-green hover:text-brand-green/80 transition-colors text-lg">
+                  {impressum.emailAddress}
                 </a>
               </p>
             </ContentCard>
@@ -188,18 +191,11 @@ export const ImpressumPage: React.FC = () => {
                   <div className="p-3 bg-brand-green/20 rounded-xl">
                     <FileText className="w-6 h-6 text-brand-green" />
                   </div>
-                  <h2 className="font-serif text-2xl md:text-3xl text-white">Handelsregistereintrag</h2>
+                  <h2 className="font-serif text-2xl md:text-3xl text-white">{impressum.registerCardTitle}</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {[
-                    { label: "Eingetragener Firmenname", value: "Röllinger GmbH" },
-                    { label: "Rechtsform", value: "Gesellschaft mit beschränkter Haftung (GmbH)" },
-                    { label: "Rechtssitz", value: "Baar, Kanton Zug" },
-                    { label: "Handelsregisteramt", value: "Kanton Zug" },
-                    { label: "Handelsregister-Nummer", value: "CH-170.4.023.391-4" },
-                    { label: "UID/MWST", value: "CHE-339.307.273" },
-                  ].map((item, index) => (
+                  {impressum.registerEntries.map((item, index) => (
                     <div key={index} className="border-l-2 border-brand-green/30 pl-4">
                       <span className="text-white/50 text-xs uppercase tracking-wider block mb-1">{item.label}</span>
                       <span className="text-white font-medium">{item.value}</span>
@@ -208,34 +204,34 @@ export const ImpressumPage: React.FC = () => {
                 </div>
                 
                 <div className="mt-8 pt-6 border-t border-white/10">
-                  <span className="text-white/50 text-xs uppercase tracking-wider block mb-1">Eintragungsdatum</span>
-                  <span className="text-white font-medium">24.06.2025</span>
+                  <span className="text-white/50 text-xs uppercase tracking-wider block mb-1">{impressum.registrationDateLabel}</span>
+                  <span className="text-white font-medium">{impressum.registrationDateValue}</span>
                 </div>
               </div>
             </motion.div>
 
             {/* Purpose */}
-            <ContentCard icon={Scale} title="Firmenzweck" index={3}>
+            <ContentCard icon={Scale} title={impressum.purposeCardTitle} index={3}>
               <p>
-                Die Gesellschaft bezweckt die Erbringung von Dienstleistungen in den Bereichen Hauswartung, Gartenpflege, Umbauten, Renovationen und Abbrucharbeiten. Sie bezweckt zudem den Handel mit Immobilien, insbesondere den Erwerb, die Verwaltung, Vermittlung, Vermietung und Veräusserung von Liegenschaften in der Schweiz.
+                {impressum.purposeParagraph1}
               </p>
               <p>
-                Die Gesellschaft kann zudem Tätigkeiten im Bereich Facility Management, Bauplanung sowie den Handel mit Waren und Materialien aller Art ausüben, insbesondere im Zusammenhang mit Bau-, Unterhalts- und Renovationsprojekten.
+                {impressum.purposeParagraph2}
               </p>
             </ContentCard>
 
             {/* Disclaimer */}
-            <ContentCard icon={Shield} title="Haftungsausschluss" index={4}>
+            <ContentCard icon={Shield} title={impressum.disclaimerCardTitle} index={4}>
               <div>
-                <h3 className="text-white font-medium mb-2">Haftung für Inhalte</h3>
+                <h3 className="text-white font-medium mb-2">{impressum.disclaimerContentTitle}</h3>
                 <p className="text-sm">
-                  Die Inhalte unserer Seiten wurden mit grösster Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+                  {impressum.disclaimerContentText}
                 </p>
               </div>
               <div>
-                <h3 className="text-white font-medium mb-2">Haftung für Links</h3>
+                <h3 className="text-white font-medium mb-2">{impressum.disclaimerLinksTitle}</h3>
                 <p className="text-sm">
-                  Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.
+                  {impressum.disclaimerLinksText}
                 </p>
               </div>
             </ContentCard>
@@ -252,11 +248,11 @@ export const ImpressumPage: React.FC = () => {
                   <div className="p-3 bg-brand-green/20 rounded-xl">
                     <Copyright className="w-6 h-6 text-brand-green" />
                   </div>
-                  <h2 className="font-serif text-2xl md:text-3xl text-white">Urheberrecht</h2>
+                  <h2 className="font-serif text-2xl md:text-3xl text-white">{impressum.copyrightCardTitle}</h2>
                 </div>
                 
                 <p className="text-white/70 leading-relaxed">
-                  Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem schweizerischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+                  {impressum.copyrightText}
                 </p>
               </div>
             </motion.div>
@@ -270,7 +266,7 @@ export const ImpressumPage: React.FC = () => {
             className="text-center mt-16"
           >
             <span className="inline-block px-6 py-3 rounded-full border border-white/10 text-white/40 text-sm">
-              Stand: Dezember 2025
+              {impressum.lastUpdated}
             </span>
           </motion.div>
         </div>

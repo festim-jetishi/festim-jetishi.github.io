@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logoImage from '../logo_short.jpeg';
+import logoImage from '/logo.jpeg';
 import { Magnetic } from './ui/Magnetic';
 import { navigation } from '../WEBSITE_CONTENT';
 

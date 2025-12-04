@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { portfolio } from '../WEBSITE_CONTENT';
+import { BeforeAfterSlider } from './ui/BeforeAfterSlider';
 
 // 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
@@ -15,14 +15,25 @@ const ProjectImage = ({ project, setInView }: { project: typeof portfolio.projec
     if (isInView) setInView(project.id);
   }, [isInView, project.id, setInView]);
 
+  const hasBeforeImage = !!project.beforeImage;
+
   return (
     <div ref={ref} className="h-[60vh] md:h-screen w-full flex items-center justify-center p-6 md:p-12">
         <div className="w-full h-full rounded-soft overflow-hidden relative group">
-            <img 
-                src={project.image} 
-                alt={project.title} 
+            {hasBeforeImage ? (
+              <BeforeAfterSlider
+                beforeImage={project.beforeImage}
+                afterImage={project.image}
+                beforeLabel={portfolio.beforeLabel}
+                afterLabel={portfolio.afterLabel}
+              />
+            ) : (
+              <img
+                src={project.image}
+                alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+              />
+            )}
         </div>
     </div>
   );
@@ -76,12 +87,9 @@ export const Portfolio: React.FC = () => {
                     <h3 className="text-3xl md:text-5xl font-serif text-primary mb-3 md:mb-6">
                         {activeProject.title}
                     </h3>
-                    <p className="hidden md:block text-sm md:text-xl text-stone-600 font-light leading-relaxed max-w-md mb-4 md:mb-8 line-clamp-3 md:line-clamp-none">
+                    <p className="hidden md:block text-sm md:text-xl text-stone-600 font-light leading-relaxed max-w-md mb-4 md:mb-8 line-clamp-3 md:line-clamp-none pb-4 md:pb-0">
                         {activeProject.description}
                     </p>
-                    <button className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs md:text-sm hover:text-brand-green transition-colors pb-4 md:pb-0">
-                        {portfolio.caseStudyButtonText} <ArrowUpRight className="w-4 h-4" />
-                    </button>
                 </motion.div>
             </div>
         </div>

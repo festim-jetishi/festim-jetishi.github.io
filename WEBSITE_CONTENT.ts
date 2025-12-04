@@ -68,7 +68,7 @@ export const hero = {
 
   // Das grosse Bild im Hintergrund der Startseite
   // Ersetzen Sie die URL mit einem Link zu Ihrem Bild
-  backgroundImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
+  backgroundImage: "/hero.avif",
 
   // Beschreibung des Bildes (für Barrierefreiheit / Screenreader)
   imageDescription: "Moderne Schweizer Architektur",
@@ -174,13 +174,13 @@ export const about = {
     {
       name: "Besim Mani",
       role: "Geschäftsleitung",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2574&auto=format&fit=crop",
+      image: "/besim.jpeg",
       description: "Der Stratege mit dem Blick für das grosse Ganze.",
     },
     {
       name: "Altin Mani",
       role: "Geschäftsleitung",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2574&auto=format&fit=crop",
+      image: "/altin.jpeg",
       description: "Der Macher mit Fokus auf Perfektion und Details.",
     },
   ],
@@ -205,21 +205,21 @@ export const about = {
   features: [
     {
       id: 1,
-      title: "Handwerk & Präzision",
-      description: "Unsere Wurzeln liegen im soliden Schweizer Handwerk. Bei Renovationen und Umbauten setzen wir auf langlebige Materialien und Detailgenauigkeit, die man spüren kann.",
-      image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop",
+      title: "Service & Vertrauen",
+      description: "Als Familienunternehmen stehen wir für direkte Kommunikation. Facility Management bedeutet für uns: Wir kümmern uns, als wäre es unser eigenes Zuhause.",
+      image: "/vertrauen.jpeg",
     },
     {
       id: 2,
-      title: "Natur & Umgebung",
-      description: "Ein Garten ist mehr als Grünfläche. Er ist Rückzugsort. Wir pflegen und gestalten Aussenbereiche so, dass sie sich harmonisch in die Umgebung einfügen.",
-      image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?q=80&w=2032&auto=format&fit=crop",
+      title: "Handwerk & Präzision",
+      description: "Unsere Wurzeln liegen im soliden Schweizer Handwerk. Bei Renovationen und Umbauten setzen wir auf langlebige Materialien und Detailgenauigkeit, die man spüren kann.",
+      image: "/handwerk.jpeg",
     },
     {
       id: 3,
-      title: "Service & Vertrauen",
-      description: "Als Familienunternehmen stehen wir für direkte Kommunikation. Facility Management bedeutet für uns: Wir kümmern uns, als wäre es unser eigenes Zuhause.",
-      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2032&auto=format&fit=crop",
+      title: "Natur & Umgebung",
+      description: "Ein Garten ist mehr als Grünfläche. Er ist Rückzugsort. Wir pflegen und gestalten Aussenbereiche so, dass sie sich harmonisch in die Umgebung einfügen.",
+      image: "/natur.jpeg",
     },
   ],
 
@@ -289,53 +289,38 @@ export const services = {
   //   image: "https://...",          ← Link zum Bild
   // },
   items: [
+    
     {
       id: 1,
-      title: "Hauswartung",
-      label: "24/7 Service",
-      description: "Umfassende Betreuung Ihrer Liegenschaften mit höchster Sorgfalt. Von der technischen Überwachung bis zur Reinigung sorgen wir für Werterhalt und gepflegte Atmosphäre – rund um die Uhr.",
-      icon: "home",
-      image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: 2,
       title: "Gartenpflege",
       label: "Grünflächen",
       description: "Kreative Gestaltung und nachhaltiger Unterhalt Ihrer Gartenanlagen. Wir verwandeln Aussenbereiche in lebendige Oasen, die zu jeder Jahreszeit Freude bereiten.",
       icon: "leaf",
-      image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=80",
+      image: "/gartenpflege_2.jpeg",
     },
     {
-      id: 3,
+      id: 2,
       title: "Umbauten",
       label: "Renovation",
       description: "Fachgerechte Planung und Ausführung von Umbau- und Renovationsprojekten. Wir begleiten Sie von der ersten Idee bis zur schlüsselfertigen Übergabe.",
       icon: "hammer",
-      image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+      image: "/umbauten.jpeg",
     },
     {
-      id: 4,
-      title: "Management",
-      label: "Facility",
-      description: "Ganzheitliches Facility Management für den Werterhalt Ihrer Immobilien. Wir optimieren Betriebsabläufe und senken Kosten durch intelligente Bewirtschaftung.",
-      icon: "building",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    },
-    {
-      id: 5,
+      id: 3,
       title: "Rückbau",
       label: "Entsorgung",
       description: "Sicherer Rückbau und umweltgerechte Entsorgung. Wir schaffen Platz für Neues und garantieren eine saubere, vorschriftsgemässe Trennung aller Materialien.",
       icon: "trash",
-      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+      image: "/rueckbau.jpeg",
     },
     {
-      id: 6,
-      title: "Immobilien",
-      label: "Handel",
-      description: "Kompetente Beratung bei Kauf und Verkauf. Wir unterstützen Sie mit Marktkenntnis und Diskretion bei Ihren Immobiliengeschäften.",
-      icon: "shovel",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+      id: 4,
+      title: "Hauswartung",
+      label: "24/7 Service",
+      description: "Umfassende Betreuung Ihrer Liegenschaften mit höchster Sorgfalt. Von der technischen Überwachung bis zur Reinigung sorgen wir für Werterhalt und gepflegte Atmosphäre – rund um die Uhr.",
+      icon: "home",
+      image: "/hauswartung.jpg",
     },
   ],
 };
@@ -361,6 +346,16 @@ export const portfolio = {
   caseStudyButtonText: "Case Study ansehen",
 
   // -----------------------------------------------------------------------------
+  // 🔄 VORHER/NACHHER-VERGLEICH
+  // -----------------------------------------------------------------------------
+
+  // Der Text für das "Vorher"-Label im Slider
+  beforeLabel: "Vorher",
+
+  // Der Text für das "Nachher"-Label im Slider
+  afterLabel: "Nachher",
+
+  // -----------------------------------------------------------------------------
   // 🏗️ PROJEKTE-LISTE
   // -----------------------------------------------------------------------------
   //
@@ -377,48 +372,36 @@ export const portfolio = {
   //   category: "Kategorie",    ← Art des Projekts (z.B. "Renovation", "Gartenbau")
   //   location: "Ort",          ← Standort des Projekts
   //   description: "Text...",   ← Kurze Beschreibung
-  //   image: "https://...",     ← Link zum Bild
+  //   beforeImage: "https://...",← Link zum Vorher-Bild (optional, für Vergleich)
+  //   image: "https://...",     ← Link zum Nachher-Bild
   // },
   projects: [
     {
       id: 1,
-      title: "Villa am See",
-      category: "Renovation",
+      title: "Balkonsanierung & Neubelag",
+      category: "Aussenbereich / Renovation",
       location: "Zug",
-      description: "Komplettsanierung einer historischen Villa mit modernem Anbau.",
-      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000",
+      description: "Erneuerung des Balkonbodens: Rückbau des Altbestands und Verlegung neuer, witterungsbeständiger WPC-Dielen auf neuer Unterkonstruktion.",
+      beforeImage: "/balkon_vorher.jpeg",
+      image: "/balkon_nachher.jpeg",
     },
     {
       id: 2,
-      title: "Stadtgarten Zug",
-      category: "Gartenbau",
+      title: "Heckenschnitt & Gartenunterhalt",
+      category: "Gartenpflege",
       location: "Zug",
-      description: "Neugestaltung einer urbanen Oase mit heimischen Pflanzen.",
-      image: "https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1000",
+      description: "Fachgerechter Rückschnitt einer stark gewachsenen Hecke entlang des Gehwegs. Wiederherstellung einer sauberen Form und Pflege der angrenzenden Rasenfläche für ein gepflegtes Erscheinungsbild.",
+      beforeImage: "/hecke_vorher.jpeg",
+      image: "/hecke_nachher.jpeg",
     },
     {
       id: 3,
-      title: "Geschäftshaus Baar",
-      category: "Facility",
-      location: "Baar",
-      description: "Ganzheitliches Facility Management für einen Bürokomplex.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000",
-    },
-    {
-      id: 4,
-      title: "Attikawohnung",
-      category: "Innenausbau",
-      location: "Cham",
-      description: "Exklusiver Innenausbau mit hochwertigen Materialien.",
-      image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000",
-    },
-    {
-      id: 5,
-      title: "Residenz Park",
-      category: "Umgebung",
-      location: "Steinhausen",
-      description: "Parkähnliche Umgebungsgestaltung für eine Wohnüberbauung.",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000",
+      title: "Rodung & Hangpflege",
+      category: "Landschaftspflege",
+      location: "Oberwil",
+      description: "Komplette Freilegung eines steilen Hanges. Entfernung von dichtem Brombeergestrüpp und Wildwuchs zur Rückgewinnung der Nutzfläche und Aussicht auf den See.",
+      beforeImage: "/garten_vorher.jpeg",
+      image: "/garten_nachher.jpeg",
     },
   ],
 };

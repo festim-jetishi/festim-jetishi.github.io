@@ -78,7 +78,7 @@ const TeamSection: React.FC = () => {
                       <img
                         src={founder.image}
                         alt={founder.name}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500" />
                     </div>
@@ -235,7 +235,7 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
       style={style}
       className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-4 md:p-8"
     >
-      <div className="relative w-full max-w-5xl min-h-[85vh] md:h-[80vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+      <div className="relative w-full max-w-7xl min-h-[50vh] md:h-[55vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
         
         {/* Image Section */}
         <div className="w-full md:w-1/2 h-48 sm:h-56 md:h-full relative overflow-hidden group flex-shrink-0">
@@ -268,12 +268,6 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
               {feature.description}
             </p>
             
-            <div>
-              <button className="group flex items-center gap-2 text-primary font-medium text-sm uppercase tracking-wider transition-colors">
-                <span className="border-b border-primary/20 pb-1 group-hover:border-primary transition-colors">{about.cardButtonText}</span>
-                <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-              </button>
-            </div>
           </motion.div>
         </div>
 

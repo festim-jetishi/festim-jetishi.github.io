@@ -191,10 +191,6 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ service, isActive, onActivate
               {service.description}
             </p>
             
-            <div className="flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-wider group/link">
-              <span>{services.detailsButtonText}</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-            </div>
             
             {/* Mobile Image (Visible only on small screens when active) */}
             <div className="lg:hidden mt-6 rounded-lg overflow-hidden h-48 w-full relative">

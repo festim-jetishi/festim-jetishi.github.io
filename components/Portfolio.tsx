@@ -120,7 +120,7 @@ export const Portfolio: React.FC = () => {
                 <ProjectImage key={project.id} project={project} setInView={setActiveId} />
             ))}
             
-            <div className="h-[20vh]" />
+            <div className="h-[5vh]" />
         </div>
 
       </div>

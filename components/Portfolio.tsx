@@ -51,45 +51,62 @@ export const Portfolio: React.FC = () => {
         
         {/* Left/Top: Sticky Content */}
         {/* On mobile: sticky below nav, bg-page to cover scrolling images */}
-        <div className="w-full md:w-1/2 sticky top-[70px] md:top-0 z-20 bg-page/95 bg-dots-dark backdrop-blur-sm md:bg-page md:h-screen flex flex-col px-6 md:px-24 border-b md:border-b-0 border-stone-100/50">
+        <div className="w-full md:w-1/2 sticky top-[70px] md:top-0 z-20 bg-page/95 bg-dots-dark backdrop-blur-sm md:bg-page md:h-screen flex flex-col px-5 md:px-24 py-3 md:py-0 border-b md:border-b-0 border-stone-100/50">
             
-            {/* Section Title */}
-            <div className="mt-4 md:mt-32 mb-6 md:mb-32 flex justify-between items-end md:block">
-                <div>
-                    <span className="font-sans text-xs md:text-sm tracking-widest uppercase text-brand-green mb-2 md:mb-4 block">{portfolio.sectionLabel}</span>
-                    <h2 className="font-serif text-4xl md:text-6xl text-primary leading-tight">
-                      {portfolio.sectionTitle.split(' ').slice(0, 1).join(' ')} <br className="hidden md:block"/>
-                      {portfolio.sectionTitle.split(' ').slice(1).join(' ')}
-                    </h2>
-                </div>
-                {/* Mobile Counter */}
-                <span className="md:hidden font-mono text-xs text-stone-400">
-                    0{activeProject.id} / 0{portfolio.projects.length}
-                </span>
+            {/* Section Title - Hidden on mobile, shown on desktop */}
+            <div className="hidden md:block mt-32 mb-32">
+                <span className="font-sans text-sm tracking-widest uppercase text-brand-green mb-4 block">{portfolio.sectionLabel}</span>
+                <h2 className="font-serif text-6xl text-primary leading-tight">
+                  {portfolio.sectionTitle.split(' ').slice(0, 1).join(' ')} <br/>
+                  {portfolio.sectionTitle.split(' ').slice(1).join(' ')}
+                </h2>
             </div>
             
             {/* Dynamic Project Info */}
-            <div className="flex-1 flex flex-col justify-start pb-6 md:pb-0">
+            <div className="flex-1 flex flex-col justify-start md:pb-0">
                 <motion.div
                     key={activeProject.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
                 >
-                    <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-                        <span className="px-2 md:px-3 py-1 rounded-full border border-stone-200 text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-500">
-                            {activeProject.category}
-                        </span>
-                        <span className="px-2 md:px-3 py-1 rounded-full border border-stone-200 text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-500">
-                            {activeProject.location}
-                        </span>
+                    {/* Mobile: Compact layout */}
+                    <div className="md:hidden">
+                        <div className="flex items-center justify-between gap-2 mb-1.5">
+                            <div className="flex items-center gap-2">
+                                <span className="px-2 py-0.5 rounded-full border border-stone-200 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                                    {activeProject.category}
+                                </span>
+                                <span className="px-2 py-0.5 rounded-full border border-stone-200 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                                    {activeProject.location}
+                                </span>
+                            </div>
+                            <span className="font-mono text-xs text-stone-400">
+                                0{activeProject.id}/0{portfolio.projects.length}
+                            </span>
+                        </div>
+                        <h3 className="text-2xl font-serif text-primary leading-tight">
+                            {activeProject.title}
+                        </h3>
                     </div>
-                    <h3 className="text-3xl md:text-5xl font-serif text-primary mb-3 md:mb-6">
-                        {activeProject.title}
-                    </h3>
-                    <p className="hidden md:block text-sm md:text-xl text-stone-600 font-light leading-relaxed max-w-md mb-4 md:mb-8 line-clamp-3 md:line-clamp-none pb-4 md:pb-0">
-                        {activeProject.description}
-                    </p>
+                    
+                    {/* Desktop: Full layout */}
+                    <div className="hidden md:block">
+                        <div className="flex items-center gap-4 mb-4">
+                            <span className="px-3 py-1 rounded-full border border-stone-200 text-xs font-bold uppercase tracking-wider text-stone-500">
+                                {activeProject.category}
+                            </span>
+                            <span className="px-3 py-1 rounded-full border border-stone-200 text-xs font-bold uppercase tracking-wider text-stone-500">
+                                {activeProject.location}
+                            </span>
+                        </div>
+                        <h3 className="text-5xl font-serif text-primary mb-6">
+                            {activeProject.title}
+                        </h3>
+                        <p className="text-xl text-stone-600 font-light leading-relaxed max-w-md mb-8 pb-0">
+                            {activeProject.description}
+                        </p>
+                    </div>
                 </motion.div>
             </div>
         </div>

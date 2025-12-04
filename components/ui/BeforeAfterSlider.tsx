@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -19,6 +20,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const handleMove = useCallback(
     (clientX: number) => {
@@ -39,6 +41,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   }, [handleMove]);
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    e.stopPropagation();
     setIsDragging(true);
     handleMove(e.touches[0].clientX);
   }, [handleMove]);
@@ -76,9 +79,9 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full overflow-hidden cursor-ew-resize select-none ${className}`}
-      onMouseDown={handleMouseDown}
-      onTouchStart={handleTouchStart}
+      className={`relative w-full h-full overflow-hidden select-none ${isMobile ? '' : 'cursor-ew-resize'} ${className}`}
+      onMouseDown={isMobile ? undefined : handleMouseDown}
+      onTouchStart={isMobile ? undefined : handleTouchStart}
     >
       {/* After Image (Background) */}
       <div className="absolute inset-0">
@@ -93,7 +96,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
-          className="absolute bottom-4 right-4 md:bottom-6 md:right-6 px-3 py-1.5 bg-brand-green text-white text-xs md:text-sm font-bold uppercase tracking-wider rounded-full shadow-lg"
+          className="absolute bottom-3 right-3 md:bottom-6 md:right-6 px-2 py-1 md:px-3 md:py-1.5 bg-brand-green text-white text-[10px] md:text-sm font-bold uppercase tracking-wider rounded-full shadow-lg"
         >
           {afterLabel}
         </motion.div>
@@ -115,7 +118,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
-          className="absolute bottom-4 left-4 md:bottom-6 md:left-6 px-3 py-1.5 bg-stone-800 text-white text-xs md:text-sm font-bold uppercase tracking-wider rounded-full shadow-lg"
+          className="absolute bottom-3 left-3 md:bottom-6 md:left-6 px-2 py-1 md:px-3 md:py-1.5 bg-stone-800 text-white text-[10px] md:text-sm font-bold uppercase tracking-wider rounded-full shadow-lg"
         >
           {beforeLabel}
         </motion.div>
@@ -123,19 +126,21 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 
       {/* Slider Handle */}
       <div
-        className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] z-10"
+        className={`absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] z-10 ${isMobile ? 'cursor-ew-resize' : ''}`}
         style={{ left: `calc(${sliderPosition}% - 2px)` }}
+        onMouseDown={isMobile ? handleMouseDown : undefined}
+        onTouchStart={isMobile ? handleTouchStart : undefined}
       >
         {/* Handle Circle */}
         <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-transform ${
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-12 md:h-12 bg-white rounded-full shadow-lg flex items-center justify-center transition-transform ${
             isDragging ? 'scale-110' : 'hover:scale-110'
           }`}
         >
           {/* Arrows */}
           <div className="flex items-center gap-1">
             <svg
-              className="w-3 h-3 md:w-4 md:h-4 text-stone-600"
+              className="w-4 h-4 md:w-4 md:h-4 text-stone-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -144,7 +149,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
             <svg
-              className="w-3 h-3 md:w-4 md:h-4 text-stone-600"
+              className="w-4 h-4 md:w-4 md:h-4 text-stone-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -161,9 +166,9 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/60 backdrop-blur-sm text-white text-xs md:text-sm rounded-full pointer-events-none"
+        className="absolute top-4 left-1/2 -translate-x-1/2 px-3 py-1.5 md:px-4 md:py-2 bg-black/60 backdrop-blur-sm text-white text-[10px] md:text-sm rounded-full pointer-events-none whitespace-nowrap"
       >
-        ← Ziehen zum Vergleichen →
+        {isMobile ? 'Schieber ziehen' : '← Ziehen zum Vergleichen →'}
       </motion.div>
     </div>
   );

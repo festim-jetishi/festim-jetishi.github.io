@@ -1,12 +1,60 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
 
+// Detect iOS devices for performance optimization
+// On iOS, ALL browsers (Chrome, Firefox, Edge, etc.) use WebKit engine under the hood
+// Apple requires this - so performance issues affect all iOS browsers, not just Safari
+const getIsIOS = () => {
+  if (typeof window === 'undefined') return false;
+  // Detect iPhone, iPad, iPod
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    // Detect iPad on iOS 13+ (which reports as MacIntel but has touch)
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  return isIOS;
+};
+
 export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const thumbRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [thumbHeight, setThumbHeight] = useState(100);
+  const [isIOS] = useState(getIsIOS);
 
   useEffect(() => {
+    // Skip Lenis on iOS - use native scroll for better performance
+    // iOS WebKit has issues with JavaScript-controlled smooth scroll (Lenis)
+    if (isIOS) {
+      // Still track scroll position for custom scrollbar on desktop Safari
+      const updateThumbNative = () => {
+        const docHeight = document.documentElement.scrollHeight;
+        const winHeight = window.innerHeight;
+        const trackHeight = trackRef.current?.clientHeight || winHeight;
+        const height = Math.max((winHeight / docHeight) * trackHeight, 60);
+        setThumbHeight(height);
+      };
+
+      const onScrollNative = () => {
+        if (thumbRef.current && trackRef.current) {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = scrollTop / docHeight;
+          const trackHeight = trackRef.current.clientHeight;
+          const trackSpace = trackHeight - thumbRef.current.offsetHeight;
+          const newTop = progress * trackSpace;
+          thumbRef.current.style.transform = `translateY(${newTop}px)`;
+        }
+      };
+
+      updateThumbNative();
+      window.addEventListener('scroll', onScrollNative, { passive: true });
+      window.addEventListener('resize', updateThumbNative);
+
+      return () => {
+        window.removeEventListener('scroll', onScrollNative);
+        window.removeEventListener('resize', updateThumbNative);
+      };
+    }
+
+    // Use Lenis for non-iOS devices (desktop browsers)
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -14,7 +62,7 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
     });
 
     // Sync Thumb
@@ -96,7 +144,7 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
       resizeObserver.disconnect();
       window.removeEventListener('resize', updateThumb);
     };
-  }, []);
+  }, [isIOS]);
 
   return (
     <>

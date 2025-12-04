@@ -118,6 +118,34 @@
         background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
         background-size: 60px 60px;
       }
+
+      /* Safari/iOS Performance Optimizations */
+      /* Disable backdrop-blur on mobile for better performance */
+      @media (max-width: 768px) {
+        .backdrop-blur-sm,
+        .backdrop-blur-md,
+        .backdrop-blur-lg {
+          -webkit-backdrop-filter: none !important;
+          backdrop-filter: none !important;
+        }
+      }
+
+      /* GPU acceleration hints for animated elements */
+      .will-change-transform {
+        will-change: transform;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+
+      /* Optimized blur fallback - use solid bg on mobile */
+      @media (max-width: 768px) {
+        .nav-blur-fallback {
+          background-color: rgba(253, 252, 248, 0.98) !important;
+        }
+        .portfolio-blur-fallback {
+          background-color: rgba(253, 252, 248, 0.98) !important;
+        }
+      }
     </style>
   <script type="importmap">
 {

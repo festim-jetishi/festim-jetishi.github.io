@@ -13,9 +13,14 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden bg-stone-900">
-      {/* Background Media */}
+      {/* Background Media - GPU accelerated for smooth parallax */}
       <motion.div
-        style={{ y, scale: 1.1 }}
+        style={{
+          y,
+          scale: 1.1,
+          willChange: 'transform', // Hint for GPU compositing
+          transform: 'translateZ(0)', // Force GPU layer
+        }}
         animate={{ scale: 1 }}
         transition={{ duration: 20, ease: "linear" }}
         className="absolute inset-0 z-0"
@@ -24,6 +29,7 @@ export const Hero: React.FC = () => {
           src={hero.backgroundImage}
           alt={hero.imageDescription}
           className="w-full h-full object-cover opacity-70"
+          style={{ transform: 'translateZ(0)' }} // GPU layer for image
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-hero-gradient" />

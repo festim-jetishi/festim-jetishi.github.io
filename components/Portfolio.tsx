@@ -51,7 +51,8 @@ export const Portfolio: React.FC = () => {
         
         {/* Left/Top: Sticky Content */}
         {/* On mobile: sticky below nav, bg-page to cover scrolling images */}
-        <div className="w-full md:w-1/2 sticky top-[70px] md:top-0 z-20 bg-page/95 bg-dots-dark backdrop-blur-sm md:bg-page md:h-screen flex flex-col px-5 md:px-24 py-3 md:py-0 border-b md:border-b-0 border-stone-100/50">
+        {/* Added portfolio-blur-fallback for Safari mobile performance */}
+        <div className="w-full md:w-1/2 sticky top-[70px] md:top-0 z-20 bg-page/95 bg-dots-dark backdrop-blur-sm portfolio-blur-fallback md:bg-page md:h-screen flex flex-col px-5 md:px-24 py-3 md:py-0 border-b md:border-b-0 border-stone-100/50">
             
             {/* Section Title - Hidden on mobile, shown on desktop */}
             <div className="hidden md:block mt-32 mb-32">

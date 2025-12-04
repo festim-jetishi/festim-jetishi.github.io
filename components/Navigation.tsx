@@ -59,8 +59,9 @@ export const Navigation: React.FC = () => {
   };
 
   // Dynamic Styles based on State
+  // Added nav-blur-fallback for Safari mobile performance
   const containerClasses = isScrolled || !isHomePage
-    ? 'bg-[#FDFCF8]/90 backdrop-blur-md border-stone-200 text-primary py-4'
+    ? 'bg-[#FDFCF8]/90 backdrop-blur-md nav-blur-fallback border-stone-200 text-primary py-4'
     : 'bg-transparent border-transparent text-white py-6';
 
   const linkColor = isScrolled || !isHomePage ? 'text-primary' : 'text-white';

@@ -102,17 +102,33 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         </motion.div>
       </div>
 
-      {/* Before Image (Clipped) */}
+      {/* Before Image (GPU-accelerated width approach instead of clip-path) */}
       <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+        className="absolute inset-y-0 left-0 overflow-hidden will-change-transform"
+        style={{
+          width: `${sliderPosition}%`,
+          transform: 'translateZ(0)', // Force GPU layer
+        }}
       >
-        <img
-          src={beforeImage}
-          alt={beforeLabel}
-          className="w-full h-full object-cover"
-          draggable={false}
-        />
+        {/* Inner container maintains full width for proper object-cover */}
+        <div
+          className="absolute inset-0"
+          style={{
+            width: `${100 / (sliderPosition / 100)}%`,
+            minWidth: '100%',
+          }}
+        >
+          <img
+            src={beforeImage}
+            alt={beforeLabel}
+            className="w-full h-full object-cover"
+            style={{
+              width: containerRef.current?.offsetWidth || '100%',
+              maxWidth: 'none',
+            }}
+            draggable={false}
+          />
+        </div>
         {/* Before Label */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -126,8 +142,11 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 
       {/* Slider Handle */}
       <div
-        className={`absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] z-10 ${isMobile ? 'cursor-ew-resize' : ''}`}
-        style={{ left: `calc(${sliderPosition}% - 2px)` }}
+        className={`absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.3)] z-10 will-change-transform ${isMobile ? 'cursor-ew-resize' : ''}`}
+        style={{
+          left: `${sliderPosition}%`,
+          transform: 'translateX(-50%) translateZ(0)', // GPU accelerated positioning
+        }}
         onMouseDown={isMobile ? handleMouseDown : undefined}
         onTouchStart={isMobile ? handleTouchStart : undefined}
       >

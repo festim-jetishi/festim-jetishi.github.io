@@ -640,7 +640,7 @@ export const impressum = {
   // -----------------------------------------------------------------------------
 
   // Der Titel der Handelsregister-Karte
-  registerCardTitle: "Handelsregistereintrag",
+  registerCardTitle: "Registereintrag",
 
   // Die Handelsregister-Einträge (Beschriftung und Wert)
   //
@@ -705,7 +705,7 @@ export const impressum = {
 // ============================================================================
 // 🔒 DATENSCHUTZ (Privacy Policy)
 // ============================================================================
-// Alle Inhalte der Datenschutz-Seite
+// Vereinfachte Datenschutzerklärung für kleine Firmen mit Kontaktformular
 
 export const datenschutz = {
   // -----------------------------------------------------------------------------
@@ -722,28 +722,10 @@ export const datenschutz = {
   pageTitle: "Datenschutz",
 
   // Der Untertitel unter dem Haupttitel
-  pageSubtitle: "Informationen zum Schutz Ihrer persönlichen Daten gemäss DSG und DSGVO",
+  pageSubtitle: "Informationen zum Umgang mit Ihren Daten",
 
   // Das Datum der letzten Aktualisierung (unten auf der Seite)
   lastUpdated: "Stand: Dezember 2025",
-
-  // Die Beschriftung für das Inhaltsverzeichnis (links am Bildschirmrand)
-  tableOfContentsLabel: "Inhalt",
-
-  // -----------------------------------------------------------------------------
-  // 📊 STATISTIKEN IM HERO-BEREICH
-  // -----------------------------------------------------------------------------
-
-  // Die Beschriftung unter der Anzahl Abschnitte
-  sectionsStatLabel: "Abschnitte",
-
-  // DSG Konformität Label
-  dsgLabel: "DSG",
-  dsgSubLabel: "Konform",
-
-  // DSGVO Konformität Label
-  dsgvoLabel: "DSGVO",
-  dsgvoSubLabel: "Konform",
 
   // -----------------------------------------------------------------------------
   // 🏢 VERANTWORTLICHER
@@ -777,159 +759,52 @@ export const datenschutz = {
   phoneLabel: "Telefon:",
 
   // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 01 - ALLGEMEINE HINWEISE
+  // 📝 ABSCHNITT 01 - VERANTWORTLICHER
   // -----------------------------------------------------------------------------
 
   section01: {
-    id: "allgemein",
+    id: "verantwortlicher",
     number: "01",
-    title: "Allgemeine Hinweise",
-    paragraph1: "Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Mit dieser Datenschutzerklärung informieren wir Sie darüber, welche Personendaten wir im Zusammenhang mit unseren Tätigkeiten, einschliesslich unserer Website, bearbeiten.",
-    paragraph2: "Diese Datenschutzerklärung richtet sich nach dem Schweizerischen Datenschutzgesetz (DSG) und, soweit anwendbar, der EU-Datenschutz-Grundverordnung (DSGVO).",
+    title: "Verantwortlicher",
+    intro: "Verantwortlich für die Datenbearbeitung auf dieser Website ist:",
   },
 
   // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 02 - VERANTWORTLICHER
+  // 📝 ABSCHNITT 02 - KONTAKTFORMULAR
   // -----------------------------------------------------------------------------
 
   section02: {
-    id: "verantwortlicher",
+    id: "kontaktformular",
     number: "02",
-    title: "Verantwortlicher",
-    intro: "Verantwortlich für die Datenbearbeitung ist:",
+    title: "Kontaktformular",
+    text: "Wenn Sie unser Kontaktformular nutzen, erheben wir folgende Daten:",
+    dataCollected: [
+      "Ihren Namen",
+      "Ihre E-Mail-Adresse",
+      "Ihre Nachricht",
+    ],
+    purposeText: "Diese Daten verwenden wir ausschliesslich, um Ihre Anfrage zu beantworten und mit Ihnen in Kontakt zu treten. Die Daten werden nicht für andere Zwecke verwendet oder an Dritte weitergegeben.",
   },
 
   // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 03 - ERHEBUNG UND BEARBEITUNG
+  // 📝 ABSCHNITT 03 - SPEICHERUNG & LÖSCHUNG
   // -----------------------------------------------------------------------------
 
   section03: {
-    id: "erhebung",
+    id: "speicherung",
     number: "03",
-    title: "Erhebung und Bearbeitung von Personendaten",
-    sub1Title: "3.1 Kontaktaufnahme",
-    sub1Text: "Wenn Sie uns per Kontaktformular, E-Mail oder Telefon kontaktieren, erheben wir die von Ihnen mitgeteilten Daten (z.B. Name, E-Mail-Adresse, Telefonnummer, Nachrichteninhalt). Diese Daten verwenden wir ausschliesslich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme mit Ihnen.",
-    sub2Title: "3.2 Nutzung unserer Website",
-    sub2Text: "Beim Besuch unserer Website werden automatisch technische Daten erfasst, die Ihr Browser an unseren Server übermittelt. Dies können sein: IP-Adresse, Browsertyp und -version, Betriebssystem, Referrer-URL, Datum und Uhrzeit des Zugriffs.",
+    title: "Speicherung & Löschung",
+    text: "Ihre Daten aus dem Kontaktformular werden nur so lange gespeichert, wie es für die Bearbeitung Ihrer Anfrage erforderlich ist. Nach Abschluss der Kommunikation werden die Daten gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.",
   },
 
   // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 04 - ZWECK DER DATENBEARBEITUNG
+  // 📝 ABSCHNITT 04 - KONTAKT FÜR DATENSCHUTZFRAGEN
   // -----------------------------------------------------------------------------
 
   section04: {
-    id: "zweck",
+    id: "kontakt",
     number: "04",
-    title: "Zweck der Datenbearbeitung",
-    intro: "Wir bearbeiten Ihre Personendaten zu folgenden Zwecken:",
-    purposes: [
-      "Beantwortung von Anfragen und Kommunikation mit Ihnen",
-      "Erstellung von Offerten und Abwicklung von Aufträgen",
-      "Erbringung unserer Dienstleistungen im Bereich Hauswartung, Gartenpflege und Bau",
-      "Gewährleistung des technischen Betriebs unserer Website",
-      "Erfüllung gesetzlicher Pflichten",
-    ],
-  },
-
-  // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 05 - RECHTSGRUNDLAGE
-  // -----------------------------------------------------------------------------
-
-  section05: {
-    id: "rechtsgrundlage",
-    number: "05",
-    title: "Rechtsgrundlage",
-    intro: "Die Bearbeitung Ihrer Daten erfolgt auf folgenden Rechtsgrundlagen:",
-    legalBases: [
-      { title: "Einwilligung", desc: "Wenn Sie uns Ihre Daten freiwillig mitteilen (z.B. über das Kontaktformular)" },
-      { title: "Vertragserfüllung", desc: "Zur Durchführung vorvertraglicher Massnahmen oder Erfüllung eines Vertrags" },
-      { title: "Berechtigte Interessen", desc: "Zur Wahrung unserer berechtigten Geschäftsinteressen" },
-      { title: "Gesetzliche Pflichten", desc: "Zur Erfüllung rechtlicher Verpflichtungen" },
-    ],
-  },
-
-  // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 06 - SPEICHERDAUER
-  // -----------------------------------------------------------------------------
-
-  section06: {
-    id: "speicherdauer",
-    number: "06",
-    title: "Speicherdauer",
-    text: "Wir speichern Ihre Personendaten nur so lange, wie es für die Erfüllung der Zwecke, für die sie erhoben wurden, erforderlich ist oder wie es gesetzliche Aufbewahrungspflichten vorsehen. Anfragen über das Kontaktformular werden nach Abschluss der Bearbeitung und nach Ablauf allfälliger Aufbewahrungsfristen gelöscht.",
-  },
-
-  // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 07 - WEITERGABE VON DATEN
-  // -----------------------------------------------------------------------------
-
-  section07: {
-    id: "weitergabe",
-    number: "07",
-    title: "Weitergabe von Daten",
-    intro: "Wir geben Ihre Personendaten nur weiter, wenn:",
-    conditions: [
-      "Sie ausdrücklich eingewilligt haben",
-      "Es für die Vertragserfüllung erforderlich ist",
-      "Eine gesetzliche Verpflichtung besteht",
-      "Es zur Wahrung berechtigter Interessen erforderlich und zulässig ist",
-    ],
-    noteLabel: "Hinweis:",
-    noteText: "Unsere Website wird auf GitHub Pages gehostet. Dabei können technische Daten auf Servern von GitHub, Inc. (USA) verarbeitet werden.",
-  },
-
-  // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 08 - COOKIES
-  // -----------------------------------------------------------------------------
-
-  section08: {
-    id: "cookies",
-    number: "08",
-    title: "Cookies",
-    highlightedText: "keine Tracking-Cookies",
-    text: "Unsere Website verwendet keine Tracking-Cookies oder Analyse-Tools. Es werden lediglich technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.",
-  },
-
-  // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 09 - IHRE RECHTE
-  // -----------------------------------------------------------------------------
-
-  section09: {
-    id: "rechte",
-    number: "09",
-    title: "Ihre Rechte",
-    intro: "Sie haben folgende Rechte in Bezug auf Ihre Personendaten:",
-    rights: [
-      { title: "Auskunftsrecht", desc: "Sie können Auskunft über Ihre bei uns gespeicherten Daten verlangen" },
-      { title: "Berichtigungsrecht", desc: "Sie können die Berichtigung unrichtiger Daten verlangen" },
-      { title: "Löschungsrecht", desc: "Sie können die Löschung Ihrer Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen" },
-      { title: "Einschränkung", desc: "Sie können unter bestimmten Umständen die Einschränkung der Datenbearbeitung verlangen" },
-      { title: "Widerspruchsrecht", desc: "Sie können der Bearbeitung Ihrer Daten widersprechen" },
-      { title: "Datenübertragbarkeit", desc: "Sie können die Herausgabe Ihrer Daten in einem gängigen Format verlangen" },
-    ],
-    contactText: "Um diese Rechte auszuüben, wenden Sie sich bitte an:",
-  },
-
-  // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 10 - DATENSICHERHEIT
-  // -----------------------------------------------------------------------------
-
-  section10: {
-    id: "sicherheit",
-    number: "10",
-    title: "Datensicherheit",
-    highlightedText: "HTTPS-Verschlüsselung",
-    text: "Wir treffen angemessene technische und organisatorische Sicherheitsmassnahmen, um Ihre Personendaten vor unberechtigtem Zugriff, Verlust oder Missbrauch zu schützen. Unsere Website verwendet HTTPS-Verschlüsselung für eine sichere Datenübertragung.",
-  },
-
-  // -----------------------------------------------------------------------------
-  // 📝 ABSCHNITT 11 - ÄNDERUNGEN
-  // -----------------------------------------------------------------------------
-
-  section11: {
-    id: "aenderungen",
-    number: "11",
-    title: "Änderungen dieser Datenschutzerklärung",
-    text: "Wir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen. Die aktuelle Version ist auf unserer Website verfügbar. Bei wesentlichen Änderungen werden wir Sie in geeigneter Weise informieren.",
+    title: "Fragen zum Datenschutz",
+    text: "Bei Fragen zu Ihren Daten oder zum Datenschutz können Sie uns jederzeit kontaktieren:",
   },
 };

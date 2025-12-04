@@ -1,6 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { about } from '../WEBSITE_CONTENT';
+
+// Detect iOS for performance optimization
+const getIsIOS = () => {
+  if (typeof window === 'undefined') return false;
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+};
 
 // 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
 
@@ -53,8 +60,8 @@ const TeamSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-             {/* Unified Glass Card */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10">
+             {/* Unified Glass Card - reduced blur on mobile for performance */}
+            <div className="bg-white/5 md:backdrop-blur-xl backdrop-blur-none bg-stone-900/90 md:bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10">
               
               {/* Header Text */}
               <div className="mb-10">
@@ -181,6 +188,8 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) => {
+  const [isIOS] = useState(getIsIOS);
+  
   // Logic:
   // If index is 0, it doesn't slide in, it's just there. But it scales down as next one comes.
   // If index > 0, it slides in from bottom.
@@ -207,49 +216,63 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
     [1, index === total - 1 ? 1 : 0.9] // Last card doesn't scale down
   );
   
-  // Opacity for depth effect
-  const brightness = useTransform(
+  // Opacity for depth effect - use opacity instead of brightness filter for iOS performance
+  const dimOpacity = useTransform(
     progress,
     [exitStart, exitEnd],
-    [1, index === total - 1 ? 1 : 0.5]
+    [1, index === total - 1 ? 1 : 0.7]
   );
   
-  // Inner Parallax Logic
+  // Inner Parallax Logic - simplified for iOS
   // Image should move slightly opposite to scroll to create "window" effect
   // Active range: entryStart to exitEnd
-  const imageScale = useTransform(progress, [entryStart, exitEnd], [1.2, 1]);
-  const imageY = useTransform(progress, [entryStart, exitEnd], ['-10%', '0%']);
+  // Reduce parallax effect on iOS for better performance
+  const imageScale = useTransform(progress, [entryStart, exitEnd], isIOS ? [1.05, 1] : [1.2, 1]);
+  const imageY = useTransform(progress, [entryStart, exitEnd], isIOS ? ['-2%', '0%'] : ['-10%', '0%']);
   
-  // Text content staggering
-  // We want text to slide up as the card settles
-  const textY = useTransform(progress, [entryStart, entryEnd], ['20px', '0px']);
+  // Text content staggering - simplified for iOS
+  const textY = useTransform(progress, [entryStart, entryEnd], isIOS ? ['10px', '0px'] : ['20px', '0px']);
   const textOpacity = useTransform(progress, [entryStart, entryEnd], [0, 1]);
 
   // For the very first card, we don't need to animate Y entry, it just sits there.
-  const style = index === 0 
-    ? { scale, filter: useTransform(brightness, b => `brightness(${b})`), zIndex: index } 
-    : { y, scale, filter: useTransform(brightness, b => `brightness(${b})`), zIndex: index };
+  // Removed expensive filter:brightness() - using opacity overlay instead for iOS
+  const style = index === 0
+    ? { scale, opacity: dimOpacity, zIndex: index }
+    : { y, scale, opacity: dimOpacity, zIndex: index };
 
   return (
-    <motion.div 
-      style={style}
+    <motion.div
+      style={{
+        ...style,
+        willChange: 'transform, opacity', // Hint for GPU compositing
+        transform: 'translateZ(0)', // Force GPU layer
+      }}
       className="absolute top-0 left-0 w-full h-full flex items-center justify-center p-4 md:p-8"
     >
-      <div className="relative w-full max-w-7xl min-h-[50vh] md:h-[55vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+      <div
+        className="relative w-full max-w-7xl min-h-[50vh] md:h-[55vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row"
+        style={{ transform: 'translateZ(0)' }} // GPU layer for card
+      >
         
         {/* Image Section */}
         <div className="w-full md:w-1/2 h-48 sm:h-56 md:h-full relative overflow-hidden group flex-shrink-0">
           <motion.div
-            style={{ scale: imageScale, y: imageY }}
+            style={{
+              scale: imageScale,
+              y: imageY,
+              willChange: 'transform',
+              transform: 'translateZ(0)',
+            }}
             className="w-full h-full"
           >
             <img
               src={feature.image}
               alt={feature.title}
-              className="w-full h-full object-cover transition-transform duration-700"
+              className="w-full h-full object-cover"
+              style={{ transform: 'translateZ(0)' }} // GPU layer for image
             />
           </motion.div>
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+          <div className="absolute inset-0 bg-black/10 md:group-hover:bg-transparent transition-colors duration-500" />
         </div>
 
         {/* Text Section */}
@@ -257,7 +280,14 @@ const Card: React.FC<CardProps> = ({ feature, index, total, progress, range }) =
           {/* Decorative background element */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-stone-50 rounded-bl-full -z-0" />
           
-          <motion.div style={{ y: textY, opacity: textOpacity }} className="relative z-10">
+          <motion.div
+            style={{
+              y: textY,
+              opacity: textOpacity,
+              willChange: 'transform, opacity',
+            }}
+            className="relative z-10"
+          >
             <span className="text-secondary/60 text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-sans block">
               0{index + 1} — {about.cardCategoryLabel}
             </span>

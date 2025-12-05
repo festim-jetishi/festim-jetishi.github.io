@@ -2,13 +2,13 @@
 
 ## ✨ Das Wichtigste zuerst
 
-**Sie müssen nur EINE einzige Datei bearbeiten:**
+**Du musst nur EINE einzige Datei bearbeiten:**
 
 📁 **[`WEBSITE_CONTENT.ts`](WEBSITE_CONTENT.ts)**
 
 Diese Datei enthält **ALLE** Texte, Bilder und Inhalte der gesamten Website!
 
-> 💡 **Vergessen Sie alles andere** – alle Änderungen passieren in dieser einen Datei.
+> 💡 **Vergiss alles andere** – alle Änderungen passieren in dieser einen Datei.
 
 ---
 
@@ -16,7 +16,7 @@ Diese Datei enthält **ALLE** Texte, Bilder und Inhalte der gesamten Website!
 
 Die Datei ist übersichtlich in Abschnitte unterteilt:
 
-| Zeile | Abschnitt | Was Sie dort finden |
+| Zeile | Abschnitt | Was du dort findest |
 |-------|-----------|---------------------|
 | ~25 | 🏠 `navigation` | Menüpunkte, Firmenname, Logo |
 | ~64 | 🎯 `hero` | Startbild, Hauptüberschrift, Slogan |
@@ -33,13 +33,13 @@ Die Datei ist übersichtlich in Abschnitte unterteilt:
 
 ## 🎯 Goldene Regeln
 
-### ✅ Das dürfen Sie tun:
+### ✅ Das darfst du tun:
 
 1. **Texte ändern** – zwischen den Anführungszeichen `"..."`
 2. **Neue Einträge hinzufügen** – durch Kopieren bestehender Blöcke
 3. **Einträge löschen** – ganze `{ ... },` Blöcke entfernen
 
-### ❌ Das dürfen Sie NICHT tun:
+### ❌ Das darfst du NICHT tun:
 
 1. ~~Die Anführungszeichen `"` löschen~~
 2. ~~Kommas `,` oder Klammern `{ }` entfernen~~
@@ -51,10 +51,10 @@ Die Datei ist übersichtlich in Abschnitte unterteilt:
 ## 📝 Schritt-für-Schritt Anleitung
 
 ### Schritt 1: Datei öffnen
-Öffnen Sie **[`WEBSITE_CONTENT.ts`](WEBSITE_CONTENT.ts)** in Ihrem Editor (z.B. VS Code).
+Öffne **[`WEBSITE_CONTENT.ts`](WEBSITE_CONTENT.ts)** in deinem Editor (z.B. VS Code).
 
 ### Schritt 2: Text finden
-Nutzen Sie `Ctrl + F` (Windows) oder `Cmd + F` (Mac) und suchen Sie nach dem Text, den Sie ändern möchten.
+Nutze `Ctrl + F` (Windows) oder `Cmd + F` (Mac) und suche nach dem Text, den du ändern möchtest.
 
 ### Schritt 3: Nur den Text ändern
 
@@ -69,7 +69,7 @@ phoneDisplay: "079 123 45 67",
 ⚠️ **Wichtig:** Nur den Text zwischen `"..."` ändern!
 
 ### Schritt 4: Speichern
-Drücken Sie `Ctrl + S` (Windows) oder `Cmd + S` (Mac).
+Drücke `Ctrl + S` (Windows) oder `Cmd + S` (Mac).
 
 ---
 
@@ -77,7 +77,7 @@ Drücken Sie `Ctrl + S` (Windows) oder `Cmd + S` (Mac).
 
 ### 📞 Telefonnummer ändern
 
-**Suchen Sie nach:** `phoneDisplay` oder `phoneLink`
+**Suche nach:** `phoneDisplay` oder `phoneLink`
 
 ```javascript
 // Im footer-Bereich (ca. Zeile 562):
@@ -89,13 +89,13 @@ phoneDisplay: "079 123 45 67",
 phoneLink: "+41791234567",
 ```
 
-> ⚠️ Ändern Sie BEIDE Werte!
+> ⚠️ Ändere BEIDE Werte!
 
 ---
 
 ### 📧 E-Mail-Adresse ändern
 
-**Suchen Sie nach:** `email`
+**Suche nach:** `email`
 
 ```javascript
 // Im footer-Bereich (ca. Zeile 559):
@@ -109,7 +109,7 @@ email: "kontakt@roellinger.ch",
 
 ### 🏠 Adresse ändern
 
-**Suchen Sie nach:** `address`
+**Suche nach:** `address`
 
 ```javascript
 // Im footer-Bereich (ca. Zeile 556):
@@ -123,9 +123,9 @@ address: "Neuestrasse 10, 6300 Zug",
 
 ### ➕ Neue Dienstleistung hinzufügen
 
-**Gehen Sie zu:** Abschnitt `services` → `items` (ca. Zeile 291)
+**Gehe zu:** Abschnitt `services` → `items` (ca. Zeile 291)
 
-**1. Kopieren Sie einen bestehenden Block:**
+**1. Kopiere einen bestehenden Block:**
 ```javascript
 {
   id: 6,
@@ -137,13 +137,13 @@ address: "Neuestrasse 10, 6300 Zug",
 },
 ```
 
-**2. Fügen Sie ihn am Ende ein (vor der `]`) mit neuer ID:**
+**2. Füge ihn am Ende ein (vor der `]`) mit neuer ID:**
 ```javascript
 {
   id: 7,                    // ← Neue, einzigartige Nummer
   title: "Winterdienst",    // ← Neuer Titel
   label: "Saisonal",        // ← Neues Label
-  description: "Professionelle Schneeräumung für Ihre Liegenschaft.",
+  description: "Professionelle Schneeräumung für deine Liegenschaft.",
   icon: "sparkles",         // ← Icon aus der Liste unten
   image: "https://images.unsplash.com/photo-1491002052546-bf38f186af56",
 },
@@ -164,7 +164,7 @@ address: "Neuestrasse 10, 6300 Zug",
 
 ### ➕ Neues Projekt hinzufügen
 
-**Gehen Sie zu:** Abschnitt `portfolio` → `projects` (ca. Zeile 382)
+**Gehe zu:** Abschnitt `portfolio` → `projects` (ca. Zeile 382)
 
 ```javascript
 // Neuen Block am Ende einfügen (vor der ]):
@@ -182,7 +182,7 @@ address: "Neuestrasse 10, 6300 Zug",
 
 ### ➕ Neue Kundenstimme hinzufügen
 
-**Gehen Sie zu:** Abschnitt `testimonials` → `items` (ca. Zeile 457)
+**Gehe zu:** Abschnitt `testimonials` → `items` (ca. Zeile 457)
 
 ```javascript
 // Neuen Block am Ende einfügen (vor der ]):
@@ -196,7 +196,7 @@ address: "Neuestrasse 10, 6300 Zug",
 
 ### ➕ Neues Team-Mitglied hinzufügen
 
-**Gehen Sie zu:** Abschnitt `about` → `founders` (ca. Zeile 173)
+**Gehe zu:** Abschnitt `about` → `founders` (ca. Zeile 173)
 
 ```javascript
 // Neuen Block am Ende einfügen (vor der ]):
@@ -212,7 +212,7 @@ address: "Neuestrasse 10, 6300 Zug",
 
 ### ❌ Eintrag löschen
 
-Um einen Eintrag zu entfernen, löschen Sie den gesamten Block von `{` bis `},`:
+Um einen Eintrag zu entfernen, lösche den gesamten Block von `{` bis `},`:
 
 ```javascript
 // VORHER:
@@ -282,10 +282,10 @@ Jeder Block endet mit `},` (Komma nach der Klammer):
 
 ### 😱 "Die Website funktioniert nicht mehr!"
 
-**Keine Panik!** So beheben Sie das Problem:
+**Keine Panik!** So behebst du das Problem:
 
 #### Option A: Rückgängig machen
-Drücken Sie mehrmals `Ctrl + Z` (Windows) oder `Cmd + Z` (Mac).
+Drücke mehrmals `Ctrl + Z` (Windows) oder `Cmd + Z` (Mac).
 
 #### Option B: Git verwenden
 ```bash

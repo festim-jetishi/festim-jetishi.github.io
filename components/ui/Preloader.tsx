@@ -29,10 +29,10 @@ export const Preloader: React.FC = () => {
           exit={{ y: "-100%", transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } }}
           className="fixed inset-0 z-[9999] bg-[#1C1917] flex items-center justify-center overflow-hidden"
         >
-          <div className="relative">
-             <div className="overflow-hidden">
-               <motion.h1 
-                  initial={{ y: "100%" }}
+          <div className="relative px-6">
+             <div className="overflow-hidden pb-4">
+               <motion.h1
+                  initial={{ y: "120%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
                   className="font-serif text-6xl md:text-8xl text-[#FDFCF8] tracking-tight"

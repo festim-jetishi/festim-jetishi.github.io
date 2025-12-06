@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
           <span className="inline-block text-white/80 text-xs font-sans tracking-[0.2em] uppercase mb-6 border border-brand-green/50 px-4 py-2 rounded-full backdrop-blur-sm">
             {hero.locationBadge}
           </span>
-          <div className="font-serif text-6xl md:text-8xl text-white leading-[1.25] mb-8 tracking-tight">
+          <div className="font-serif text-6xl md:text-8xl text-white leading-[1.25] md:leading-[1.35] mb-8 tracking-tight">
             <TextReveal delay={0.2} animateOnMount>{hero.taglinePart1}</TextReveal>
             <span className="italic font-light opacity-90 block mt-2">
                  <TextReveal delay={0.5} animateOnMount>{hero.taglinePart2}</TextReveal>

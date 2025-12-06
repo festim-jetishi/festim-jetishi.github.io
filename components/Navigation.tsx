@@ -88,7 +88,7 @@ export const Navigation: React.FC = () => {
           </Link>
 
           {/* Links (Center) - Absolute Positioned to ensure perfect centering */}
-          <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
+          <nav className="hidden xl:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8">
             {navigation.links.map((link) => (
               <Magnetic key={link.name}>
                 <a
@@ -103,7 +103,7 @@ export const Navigation: React.FC = () => {
           </nav>
 
           {/* CTA Button (Right) */}
-          <div className="hidden md:block">
+          <div className="hidden xl:block">
             <Magnetic strength={50}>
               <motion.a
                 whileHover={{ scale: 1.05 }}
@@ -117,9 +117,9 @@ export const Navigation: React.FC = () => {
             </Magnetic>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile/Tablet Toggle */}
           <button
-            className={`md:hidden relative z-50 p-2 transition-colors duration-300 ${isScrolled || mobileMenuOpen || !isHomePage ? 'text-primary' : 'text-white'}`}
+            className={`xl:hidden relative z-50 p-2 transition-colors duration-300 ${isScrolled || mobileMenuOpen || !isHomePage ? 'text-primary' : 'text-white'}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

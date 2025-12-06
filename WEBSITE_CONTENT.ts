@@ -340,7 +340,7 @@ export const portfolio = {
   sectionLabel: "Portfolio",
 
   // Die grosse Überschrift des Abschnitts
-  sectionTitle: "Ausgewählte Arbeiten.",
+  sectionTitle: "Einblicke",
 
   // Der Text auf dem "Case Study" Button
   caseStudyButtonText: "Case Study ansehen",
@@ -403,6 +403,15 @@ export const portfolio = {
       beforeImage: "/garten_vorher.jpeg",
       image: "/garten_nachher.jpeg",
     },
+    {
+      id: 4,
+      title: "Malerarbeiten Dachgeschoss",
+      category: "Innenrenovation",
+      location: "Thun",
+      description: "Helle Neugestaltung eines Dachzimmers. Professioneller Weissanstrich der hölzernen Täferdecke und der Wände, um den Raum optisch zu vergrössern und eine moderne Wohnatmosphäre zu schaffen.",
+      beforeImage: "/malen_vorher.jpeg",
+      image: "/malen_nachher.jpeg"
+    }
   ],
 };
 

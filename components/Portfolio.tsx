@@ -18,8 +18,8 @@ const ProjectImage = ({ project, setInView }: { project: typeof portfolio.projec
   const hasBeforeImage = !!project.beforeImage;
 
   return (
-    <div ref={ref} className="h-[60vh] md:h-screen w-full flex items-center justify-center p-6 md:p-12">
-        <div className="w-full h-full rounded-soft overflow-hidden relative group">
+    <div ref={ref} className="h-[60vh] xl:h-[75vh] w-full flex items-center justify-center p-6 xl:p-16">
+        <div className="w-full h-full max-w-4xl rounded-soft overflow-hidden relative group">
             {hasBeforeImage ? (
               <BeforeAfterSlider
                 beforeImage={project.beforeImage}
@@ -47,15 +47,15 @@ export const Portfolio: React.FC = () => {
     <section id="portfolio" className="bg-page bg-dots-dark relative">
       
       {/* Unified Layout */}
-      <div className="flex flex-col md:flex-row w-full relative">
+      <div className="flex flex-col xl:flex-row w-full relative">
         
         {/* Left/Top: Sticky Content */}
-        {/* On mobile: sticky below nav, bg-page to cover scrolling images */}
+        {/* On mobile/tablet: sticky below nav, bg-page to cover scrolling images */}
         {/* Added portfolio-blur-fallback for Safari mobile performance */}
-        <div className="w-full md:w-1/2 sticky top-[70px] md:top-0 z-20 bg-page/95 bg-dots-dark backdrop-blur-sm portfolio-blur-fallback md:bg-page md:h-screen flex flex-col px-5 md:px-24 py-3 md:py-0 border-b md:border-b-0 border-stone-100/50">
+        <div className="w-full xl:w-1/2 sticky top-[70px] xl:top-0 z-20 bg-page/95 bg-dots-dark backdrop-blur-sm portfolio-blur-fallback xl:bg-page xl:h-screen flex flex-col px-5 md:px-8 xl:px-24 py-3 md:py-4 xl:py-0 border-b xl:border-b-0 border-stone-100/50">
             
-            {/* Section Title - Hidden on mobile, shown on desktop */}
-            <div className="hidden md:block mt-32 mb-32">
+            {/* Section Title - Hidden on mobile/tablet, shown on desktop */}
+            <div className="hidden xl:block mt-32 mb-32">
                 <span className="font-sans text-sm tracking-widest uppercase text-brand-green mb-4 block">{portfolio.sectionLabel}</span>
                 <h2 className="font-serif text-6xl text-primary leading-tight">
                   {portfolio.sectionTitle.split(' ').slice(0, 1).join(' ')} <br/>
@@ -64,35 +64,35 @@ export const Portfolio: React.FC = () => {
             </div>
             
             {/* Dynamic Project Info */}
-            <div className="flex-1 flex flex-col justify-start md:pb-0">
+            <div className="flex-1 flex flex-col justify-start xl:pb-0">
                 <motion.div
                     key={activeProject.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4 }}
                 >
-                    {/* Mobile: Compact layout */}
-                    <div className="md:hidden">
-                        <div className="flex items-center justify-between gap-2 mb-1.5">
-                            <div className="flex items-center gap-2">
-                                <span className="px-2 py-0.5 rounded-full border border-stone-200 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                    {/* Mobile/Tablet: Compact layout */}
+                    <div className="xl:hidden">
+                        <div className="flex items-center justify-between gap-2 md:gap-3 mb-1.5 md:mb-3">
+                            <div className="flex items-center gap-2 md:gap-3">
+                                <span className="px-2 md:px-3 py-0.5 md:py-1 rounded-full border border-stone-200 text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-500">
                                     {activeProject.category}
                                 </span>
-                                <span className="px-2 py-0.5 rounded-full border border-stone-200 text-[10px] font-bold uppercase tracking-wider text-stone-500">
+                                <span className="px-2 md:px-3 py-0.5 md:py-1 rounded-full border border-stone-200 text-[10px] md:text-xs font-bold uppercase tracking-wider text-stone-500">
                                     {activeProject.location}
                                 </span>
                             </div>
-                            <span className="font-mono text-xs text-stone-400">
+                            <span className="font-mono text-xs md:text-sm text-stone-400">
                                 0{activeProject.id}/0{portfolio.projects.length}
                             </span>
                         </div>
-                        <h3 className="text-2xl font-serif text-primary leading-tight">
+                        <h3 className="text-2xl md:text-4xl font-serif text-primary leading-tight">
                             {activeProject.title}
                         </h3>
                     </div>
                     
                     {/* Desktop: Full layout */}
-                    <div className="hidden md:block">
+                    <div className="hidden xl:block">
                         <div className="flex items-center gap-4 mb-4">
                             <span className="px-3 py-1 rounded-full border border-stone-200 text-xs font-bold uppercase tracking-wider text-stone-500">
                                 {activeProject.category}
@@ -113,9 +113,9 @@ export const Portfolio: React.FC = () => {
         </div>
 
         {/* Right/Bottom: Scrollable Images */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full xl:w-1/2">
              {/* Spacer */}
-            <div className="h-[10vh] md:h-[20vh]" />
+            <div className="h-[10vh] xl:h-[20vh]" />
             
             {portfolio.projects.map(project => (
                 <ProjectImage key={project.id} project={project} setInView={setActiveId} />

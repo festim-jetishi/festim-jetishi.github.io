@@ -41,6 +41,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
   }, [handleMove]);
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     setIsDragging(true);
     handleMove(e.touches[0].clientX);
@@ -54,6 +55,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
 
     const handleTouchMove = (e: TouchEvent) => {
       if (!isDragging) return;
+      e.preventDefault();
       handleMove(e.touches[0].clientX);
     };
 
@@ -64,7 +66,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
     if (isDragging) {
       window.addEventListener('mousemove', handleMouseMove);
       window.addEventListener('mouseup', handleEnd);
-      window.addEventListener('touchmove', handleTouchMove);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
       window.addEventListener('touchend', handleEnd);
     }
 

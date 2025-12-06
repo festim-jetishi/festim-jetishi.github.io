@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, User, FileText, Clock, Mail } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -6,6 +6,14 @@ import { TextReveal } from '../components/ui/TextReveal';
 import { datenschutz } from '../WEBSITE_CONTENT';
 
 // 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
+
+// Detect iOS for performance optimizations
+// On iOS, ALL browsers use WebKit engine (Apple requires this)
+const getIsIOS = () => {
+  if (typeof window === 'undefined') return false;
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+};
 
 interface SectionData {
   id: string;
@@ -106,9 +114,12 @@ const sections: SectionData[] = [
 ];
 
 export const DatenschutzPage: React.FC = () => {
+  const [isIOS] = useState(getIsIOS);
   const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+  
+  // Disable parallax on iOS for better performance
+  const heroY = useTransform(scrollY, [0, 500], isIOS ? [0, 0] : [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], isIOS ? [1, 1] : [1, 0.3]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -126,9 +137,9 @@ export const DatenschutzPage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900" />
           <div className="absolute inset-0 bg-dots-light opacity-30" />
           
-          {/* Abstract gradient blobs */}
-          <div className="absolute top-1/3 -left-32 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-[100px]" />
+          {/* Abstract gradient blobs - hidden on mobile for iOS performance */}
+          <div className="hidden md:block absolute top-1/3 -left-32 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px]" />
+          <div className="hidden md:block absolute bottom-0 right-1/4 w-64 h-64 bg-white/5 rounded-full blur-[100px]" />
         </motion.div>
         
         {/* Hero Content */}
@@ -185,7 +196,8 @@ export const DatenschutzPage: React.FC = () => {
       <section className="relative py-16 md:py-24">
         {/* Background */}
         <div className="absolute inset-0 bg-stone-900 bg-dots-light" />
-        <div className="absolute top-1/4 right-0 w-1/3 h-1/2 bg-brand-green/5 rounded-full blur-[150px] pointer-events-none" />
+        {/* Large blur decoration - hidden on mobile for iOS performance */}
+        <div className="hidden md:block absolute top-1/4 right-0 w-1/3 h-1/2 bg-brand-green/5 rounded-full blur-[150px] pointer-events-none" />
         
         <div className="relative z-10 container mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto space-y-6">
@@ -199,7 +211,8 @@ export const DatenschutzPage: React.FC = () => {
                 transition={{ duration: 0.7, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="group relative scroll-mt-32"
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/[0.07] transition-all duration-500 hover:border-brand-green/20">
+                {/* backdrop-blur disabled on mobile for iOS performance */}
+                <div className="relative bg-stone-800/95 md:bg-white/5 backdrop-blur-none md:backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-stone-800 md:hover:bg-white/[0.07] transition-all duration-500 hover:border-brand-green/20">
                   {/* Section Header */}
                   <div className="flex items-start gap-4 mb-4">
                     <div className="flex items-center gap-3">

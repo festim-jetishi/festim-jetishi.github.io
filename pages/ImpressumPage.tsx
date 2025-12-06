@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Building2, Phone, Mail, FileText, Scale, Shield, Copyright } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -6,6 +6,14 @@ import { TextReveal } from '../components/ui/TextReveal';
 import { impressum } from '../WEBSITE_CONTENT';
 
 // 📝 Inhalte bearbeiten: WEBSITE_CONTENT.ts
+
+// Detect iOS for performance optimizations
+// On iOS, ALL browsers use WebKit engine (Apple requires this)
+const getIsIOS = () => {
+  if (typeof window === 'undefined') return false;
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -44,7 +52,8 @@ const ContentCard: React.FC<ContentCardProps> = ({ icon: Icon, title, children, 
     transition={{ duration: 0.7, delay: 0.3 + index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     className="group relative h-full"
   >
-    <div className="relative h-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-500 hover:border-brand-green/30">
+    {/* backdrop-blur disabled on mobile for iOS performance - use solid bg fallback */}
+    <div className="relative h-full bg-stone-800/95 md:bg-white/5 backdrop-blur-none md:backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-stone-800 md:hover:bg-white/10 transition-all duration-500 hover:border-brand-green/30">
       {/* Icon Header */}
       <div className="flex items-center gap-4 mb-6">
         <div className="p-3 bg-brand-green/20 rounded-xl group-hover:bg-brand-green/30 transition-colors duration-300">
@@ -65,9 +74,12 @@ const ContentCard: React.FC<ContentCardProps> = ({ icon: Icon, title, children, 
 );
 
 export const ImpressumPage: React.FC = () => {
+  const [isIOS] = useState(getIsIOS);
   const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+  
+  // Disable parallax on iOS for better performance
+  const heroY = useTransform(scrollY, [0, 500], isIOS ? [0, 0] : [0, 150]);
+  const heroOpacity = useTransform(scrollY, [0, 300], isIOS ? [1, 1] : [1, 0.3]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -85,9 +97,9 @@ export const ImpressumPage: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900" />
           <div className="absolute inset-0 bg-dots-light opacity-30" />
           
-          {/* Abstract gradient blobs */}
-          <div className="absolute top-1/4 -right-32 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-[100px]" />
+          {/* Abstract gradient blobs - hidden on mobile for iOS performance */}
+          <div className="hidden md:block absolute top-1/4 -right-32 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px]" />
+          <div className="hidden md:block absolute bottom-0 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-[100px]" />
         </motion.div>
         
         {/* Hero Content */}
@@ -144,7 +156,8 @@ export const ImpressumPage: React.FC = () => {
       <section className="relative py-20 md:py-32">
         {/* Background */}
         <div className="absolute inset-0 bg-stone-900 bg-dots-light" />
-        <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-brand-green/5 rounded-full blur-[150px] pointer-events-none" />
+        {/* Large blur decoration - hidden on mobile for iOS performance */}
+        <div className="hidden md:block absolute top-0 left-0 w-1/3 h-1/2 bg-brand-green/5 rounded-full blur-[150px] pointer-events-none" />
         
         <div className="relative z-10 container mx-auto px-6 md:px-12">
           <motion.div
@@ -186,7 +199,8 @@ export const ImpressumPage: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-2"
             >
-              <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10">
+              {/* backdrop-blur disabled on mobile for iOS performance */}
+              <div className="relative bg-stone-800/95 md:bg-gradient-to-br md:from-white/10 md:to-white/5 backdrop-blur-none md:backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="p-3 bg-brand-green/20 rounded-xl">
                     <FileText className="w-6 h-6 text-brand-green" />
@@ -243,7 +257,8 @@ export const ImpressumPage: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-2"
             >
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10">
+              {/* backdrop-blur disabled on mobile for iOS performance */}
+              <div className="relative bg-stone-800/95 md:bg-white/5 backdrop-blur-none md:backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-10">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-brand-green/20 rounded-xl">
                     <Copyright className="w-6 h-6 text-brand-green" />

@@ -92,7 +92,7 @@ export const hero = {
   subtitle: "Für alles, was Ihr Zuhause braucht.",
 
   // Die Beschreibung darunter
-  description: "Ihr junges Macher-Team für Hauswartung, Garten und Bau. Persönlich, zuverlässig und direkt aus Baar.",
+  description: "",
 
   // -----------------------------------------------------------------------------
   // 🔽 SCROLL-HINWEIS
@@ -100,6 +100,23 @@ export const hero = {
 
   // Der Text beim Pfeil zum Runterscrollen
   scrollHint: "Entdecken",
+};
+
+
+// ============================================================================
+// 🖼️ PARALLAX SECTION (Bild mit Zitat)
+// ============================================================================
+// Der grosse Parallax-Bereich mit Bild und inspirierendem Zitat
+
+export const parallaxSection = {
+  // Das Hintergrundbild für den Parallax-Effekt
+  backgroundImage: "/haus_2.jpg",
+
+  // Beschreibung des Bildes (für Barrierefreiheit / Screenreader)
+  imageDescription: "Modernes Schweizer Haus",
+
+  // Das Zitat, das über dem Bild angezeigt wird
+  quote: "Weil Ihr Zuhause mehr ist als nur ein Ort.<br />Es ist Ihr Mittelpunkt.",
 };
 
 
@@ -304,7 +321,7 @@ export const services = {
       label: "Renovation",
       description: "Fachgerechte Planung und Ausführung von Umbau- und Renovationsprojekten. Wir begleiten Sie von der ersten Idee bis zur schlüsselfertigen Übergabe.",
       icon: "hammer",
-      image: "/umbauten.jpeg",
+      image: "/umbau.jpeg",
     },
     {
       id: 3,
@@ -320,7 +337,7 @@ export const services = {
       label: "24/7 Service",
       description: "Umfassende Betreuung Ihrer Liegenschaften mit höchster Sorgfalt. Von der technischen Überwachung bis zur Reinigung sorgen wir für Werterhalt und gepflegte Atmosphäre – rund um die Uhr.",
       icon: "home",
-      image: "/hauswartung.jpg",
+      image: "/hauswartung.jpeg",
     },
   ],
 };
@@ -409,8 +426,8 @@ export const portfolio = {
       category: "Innenrenovation",
       location: "Thun",
       description: "Helle Neugestaltung eines Dachzimmers. Professioneller Weissanstrich der hölzernen Täferdecke und der Wände, um den Raum optisch zu vergrössern und eine moderne Wohnatmosphäre zu schaffen.",
-      beforeImage: "/malen_vorher.jpeg",
-      image: "/malen_nachher.jpeg"
+      beforeImage: "/malen_boden_vorher.jpeg",
+      image: "/malen_boden_nachher.jpeg"
     }
   ],
 };
@@ -449,27 +466,23 @@ export const testimonials = {
   items: [
     {
       quote: "Eine unglaubliche Transformation unseres Gartens. Das Team war professionell und pünktlich.",
-      author: "Familie Müller",
+      author: "Familie Hermann",
     },
     {
       quote: "Die Renovation wurde genau nach unseren Vorstellungen umgesetzt. Sehr empfehlenswert.",
-      author: "Thomas Huber",
+      author: "Johannes Pfister",
     },
     {
       quote: "Zuverlässiges Facility Management. Wir müssen uns um nichts mehr kümmern.",
-      author: "Liegenschaften AG",
+      author: "Confido Immobilien",
     },
     {
       quote: "Die Zusammenarbeit war hervorragend. Sehr professionell und effizient.",
-      author: "Sarah Weber",
-    },
-    {
-      quote: "Endlich ein Partner, auf den man sich verlassen kann. Top Service!",
-      author: "Michael Schmid",
+      author: "Lydia Gloor",
     },
     {
       quote: "Wir arbeiten seit Jahren mit der Röllinger GmbH zusammen und sind sehr zufrieden.",
-      author: "Immobilien Zürich",
+      author: "Meschenmoser Immo GmbH",
     },
   ],
 };

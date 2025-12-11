@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden bg-stone-900">
+    <section id="home" className="relative h-screen min-h-[600px] w-full overflow-hidden bg-stone-900 hero-section">
       {/* Background Media - GPU accelerated for smooth parallax */}
       <motion.div
         style={{
@@ -36,17 +36,17 @@ export const Hero: React.FC = () => {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-32">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 h-full flex flex-col justify-end pb-20 md:pb-24 lg:pb-28 xl:pb-32">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl"
         >
-          <span className="inline-block text-white/80 text-xs font-sans tracking-[0.2em] uppercase mb-6 border border-brand-green/50 px-4 py-2 rounded-full backdrop-blur-sm">
+          <span className="inline-block text-white/80 text-xs font-sans tracking-[0.2em] uppercase mb-4 md:mb-6 border border-brand-green/50 px-4 py-2 rounded-full backdrop-blur-sm">
             {hero.locationBadge}
           </span>
-          <div className="font-serif text-6xl md:text-8xl text-white leading-[1.25] md:leading-[1.35] mb-8 tracking-tight">
+          <div className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl text-white leading-[1.2] sm:leading-[1.25] md:leading-[1.3] lg:leading-[1.35] mb-4 md:mb-6 lg:mb-8 tracking-tight hero-headline">
             <TextReveal delay={0.2} animateOnMount>{hero.taglinePart1}</TextReveal>
             <span className="italic font-light opacity-90 block mt-2">
                  <TextReveal delay={0.5} animateOnMount>{hero.taglinePart2}</TextReveal>
@@ -57,7 +57,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="font-serif text-2xl md:text-3xl text-white/90 mb-8 -mt-4 italic"
+            className="font-serif text-xl sm:text-2xl md:text-2xl lg:text-3xl text-white/90 mb-4 md:mb-6 lg:mb-8 -mt-2 md:-mt-4 italic hero-subtitle"
           >
             {hero.subtitle}
           </motion.h2>
@@ -66,7 +66,7 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 1 }}
-            className="font-sans text-lg md:text-xl text-white/80 max-w-xl font-light leading-relaxed"
+            className="font-sans text-base sm:text-lg md:text-lg lg:text-xl text-white/80 max-w-xl font-light leading-relaxed hero-description"
           >
             {hero.description}
           </motion.p>
@@ -76,9 +76,9 @@ export const Hero: React.FC = () => {
       {/* Scroll Cue */}
       <motion.div
         style={{ opacity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-brand-green flex flex-col items-center gap-3"
+        className="absolute bottom-6 md:bottom-8 lg:bottom-10 left-1/2 -translate-x-1/2 text-brand-green flex flex-col items-center gap-2 md:gap-3 hero-scroll-cue"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em]">{hero.scrollHint}</span>
+        <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em]">{hero.scrollHint}</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

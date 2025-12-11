@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { parallaxSection } from '../WEBSITE_CONTENT';
 
 export const ParallaxSection: React.FC = () => {
   const ref = useRef(null);
@@ -12,26 +13,30 @@ export const ParallaxSection: React.FC = () => {
 
   return (
     <section className="py-24 px-4 md:px-8 bg-page overflow-hidden">
-      <div 
+      <div
         ref={ref}
         className="relative h-[80vh] w-full rounded-soft overflow-hidden"
       >
-        <motion.div 
+        <motion.div
           style={{ y, scale: 1.1 }}
           className="absolute inset-0 w-full h-full"
         >
-           <img 
-            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" 
-            alt="Luxury Real Estate" 
+           <img
+            src={parallaxSection.backgroundImage}
+            alt={parallaxSection.imageDescription}
             className="w-full h-full object-cover"
           />
         </motion.div>
         
         {/* Quote Overlay */}
-        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-          <h2 className="font-serif text-3xl md:text-5xl text-white text-center max-w-5xl px-6 leading-tight italic">
-            "Weil Ihr Zuhause mehr ist als nur ein Ort.<br />Es ist Ihr Mittelpunkt."
-          </h2>
+        <div className="absolute inset-0 bg-black/35 flex items-center justify-center">
+          <h2
+            className="font-serif text-4xl md:text-6xl lg:text-6xl text-white text-center max-w-6xl px-8 md:px-12 leading-tight italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]"
+            style={{
+              textShadow: '0 4px 12px rgba(0,0,0,0.9), 0 2px 4px rgba(0,0,0,0.8)'
+            }}
+            dangerouslySetInnerHTML={{ __html: `"${parallaxSection.quote}"` }}
+          />
         </div>
       </div>
     </section>
